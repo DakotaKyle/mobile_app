@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mobile_app.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,9 @@ namespace mobile_app
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            var dashboard = new Dashboard();
+            var navPage = new NavigationPage(dashboard);
+            MainPage = navPage;
         }
 
         protected override void OnStart()
