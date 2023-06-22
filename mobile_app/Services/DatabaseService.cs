@@ -80,7 +80,7 @@ namespace mobile_app.Services
 
         #region Widget methods
 
-        public static async Task AddWidget(int gadgetId, string name, string color, bool notificationStart, string notes)
+        public static async Task AddWidget(int gadgetId, string name, string color, DateTime creationDate, bool notificationStart, string notes)
         {
             await Init();
             var widget = new Widget()
@@ -88,6 +88,7 @@ namespace mobile_app.Services
                 GadgetId = gadgetId,
                 Name = name,
                 Color = color,
+                CreationDate = creationDate,
                 StartNotification = notificationStart,
                 Notes = notes
             };
@@ -118,7 +119,7 @@ namespace mobile_app.Services
             return widgets;
         }
 
-        public static async Task UpdateWidget(int id, string name, string color, bool notificationStart, string notes)
+        public static async Task UpdateWidget(int id, string name, string color, DateTime creationDate, bool notificationStart, string notes)
         {
             await Init();
 
@@ -130,6 +131,7 @@ namespace mobile_app.Services
             {
                 widgetQuerry.Name = name;
                 widgetQuerry.Color = color;
+                widgetQuerry.CreationDate = creationDate;
                 widgetQuerry.StartNotification = notificationStart;
                 widgetQuerry.Notes = notes;
 
@@ -148,7 +150,8 @@ namespace mobile_app.Services
             Gadget gadget = new Gadget()
             {
                 Name = "Gadget 1",
-                Color = "Teal"
+                Color = "Teal",
+                CreationDate = DateTime.Today.Date
             };
 
             await _db.InsertAsync(gadget);
@@ -157,6 +160,7 @@ namespace mobile_app.Services
             {
                 Name = "Widget 1",
                 Color = "Blue",
+                CreationDate = DateTime.Today.Date,
                 StartNotification = true,
                 GadgetId = gadget.Id
             };
