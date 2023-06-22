@@ -2,11 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_app.Views.GadgetAdd">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SaveGadget" Text="Save" Clicked="SaveGadget_Clicked"/>
+        <ToolbarItem x:Name="CancelGadget" Text="Cancel" Clicked="CancelGadget_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" BackgroundColor="WhiteSmoke">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Name"/>
+                <Entry x:Name="GadgetName" Placeholder="Enter Gadget Name" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" Text="{Binding Name}"/>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Color"/>
+                <Picker Grid.Row="1" Grid.Column="1" FontSize="Medium" x:Name="GadgetColorPicker" Title="Select a color" TitleColor="Teal">
+                    <Picker.Items>
+                        <x:String>Red</x:String>
+                        <x:String>Black</x:String>
+                        <x:String>Blue</x:String>
+                    </Picker.Items>
+                </Picker>
+                <DatePicker Grid.Row="2" Grid.Column="0" x:Name="CreationDatePicker"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

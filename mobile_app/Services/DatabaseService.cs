@@ -31,14 +31,15 @@ namespace mobile_app.Services
 
         #region Gadget methods
 
-        public static async Task AddGadget(string name, string color)
+        public static async Task AddGadget(string name, string color, DateTime creationDate)
         {
             await Init();
 
             var gadget = new Gadget()
             {
                 Name = name,
-                Color = color
+                Color = color,
+                CreationDate = creationDate
             };
 
             await _db.InsertAsync(gadget);
@@ -59,7 +60,7 @@ namespace mobile_app.Services
             return gadgets;
         }
 
-        public static async Task UpdateGadget(int id, string name, string color)
+        public static async Task UpdateGadget(int id, string name, string color, DateTime creationDate)
         {
             await Init();
 
@@ -71,6 +72,7 @@ namespace mobile_app.Services
             {
                 gadgetQuery.Name = name;
                 gadgetQuery.Color = color;
+                gadgetQuery.CreationDate = creationDate;
 
                 await _db.UpdateAsync(gadgetQuery);
             }
