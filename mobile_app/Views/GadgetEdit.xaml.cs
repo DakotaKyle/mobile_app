@@ -71,7 +71,7 @@ namespace mobile_app.Views
         {
             var gadgetId = int.Parse(GadgetId.Text);
 
-            await Navigation.PushAsync(new WidgetAdd(gadgetId));
+           // await Navigation.PushAsync(new WidgetAdd(gadgetId));
         }
 
         async void WidgetCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -80,7 +80,7 @@ namespace mobile_app.Views
 
             if (e.CurrentSelection != null)
             {
-                await Navigation.PushAsync(new WidgetEdit(Widget));
+               // await Navigation.PushAsync(new WidgetEdit(Widget));
             }
         }
     }

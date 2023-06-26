@@ -16,5 +16,20 @@ namespace mobile_app.Views
         {
             InitializeComponent();
         }
+
+        private void SaveWidget_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CancelWidget_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Home_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
