@@ -22,18 +22,18 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Gadget ID"/>
-                <Entry x:Name="GadgetId" Placeholder="Enter Gadget ID" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" IsReadOnly="True" Text="{Binding GadgetId}"/>
+                <Entry x:Name="GadgetId" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" IsReadOnly="True" Text="{Binding GadgetId}"/>
                 <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Name"/>
                 <Entry x:Name="GadgetName" Placeholder="Enter Gadget Name" Grid.Row="1" Grid.Column="1" VerticalTextAlignment="Center" Text="{Binding Name}"/>
-                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Color"/>
-                <Picker Grid.Row="1" Grid.Column="1" FontSize="Medium" x:Name="GadgetColorPicker" Title="Select a color" TitleColor="Teal">
+                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Color"/>
+                <Picker Grid.Row="2" Grid.Column="1" FontSize="Medium" x:Name="GadgetColorPicker" Title="Select a color" TitleColor="Teal">
                     <Picker.Items>
                         <x:String>Red</x:String>
                         <x:String>Black</x:String>
                         <x:String>Blue</x:String>
                     </Picker.Items>
                 </Picker>
-                <DatePicker Grid.Row="2" Grid.Column="0" x:Name="CreationDatePicker"/>
+                <DatePicker Grid.Row="3" Grid.Column="0" x:Name="CreationDatePicker"/>
             </Grid>
             <Button x:Name="AddWidget" Text="Add Widget" Clicked="AddWidget_Clicked"/>
             

@@ -25,6 +25,7 @@ namespace mobile_app.Views
             InitializeComponent();
 
             _selectedGadgetId = gadget.Id;
+            GadgetId.Text = gadget.Id.ToString();
             GadgetName.Text = gadget.Name;
             GadgetColorPicker.SelectedItem = gadget.Color;
             CreationDatePicker.Date = gadget.CreationDate;
@@ -42,7 +43,7 @@ namespace mobile_app.Views
                 await DisplayAlert("Missing color", "Please enter a color", "OK");
             }
 
-            await DatabaseService.UpdateGadget(int.Parse(GadgetId.Text), GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
+            await DatabaseService.UpdateGadget(_selectedGadgetId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
             await Navigation.PopAsync();
         }
 
@@ -57,7 +58,7 @@ namespace mobile_app.Views
 
             if (answer == true)
             {
-                var id = int.Parse(GadgetId.Text);
+                var id = _selectedGadgetId;
                 
                 await DatabaseService.RemoveGadget(id);
 
@@ -69,9 +70,9 @@ namespace mobile_app.Views
 
         async void AddWidget_Clicked(object sender, EventArgs e)
         {
-            var gadgetId = int.Parse(GadgetId.Text);
+            var gadgetId = _selectedGadgetId;
 
-           // await Navigation.PushAsync(new WidgetAdd(gadgetId));
+            await Navigation.PushAsync(new WidgetAdd(gadgetId));
         }
 
         async void WidgetCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -80,8 +81,14 @@ namespace mobile_app.Views
 
             if (e.CurrentSelection != null)
             {
-               // await Navigation.PushAsync(new WidgetEdit(Widget));
+                await Navigation.PushAsync(new WidgetEdit(widget));
             }
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            WidgetCollectionView.ItemsSource = await DatabaseService.GetWidgets();
         }
     }
 }

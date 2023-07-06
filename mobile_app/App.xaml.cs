@@ -1,4 +1,5 @@
-﻿using mobile_app.Views;
+﻿using mobile_app.Services;
+using mobile_app.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,6 +11,12 @@ namespace mobile_app
         public App()
         {
             InitializeComponent();
+
+            if (Settings.FirstRun)
+            {
+                DatabaseService.LoadSampleData();
+                Settings.FirstRun = false;
+            }
 
             var dashboard = new Dashboard();
             var navPage = new NavigationPage(dashboard);

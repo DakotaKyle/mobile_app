@@ -38,7 +38,7 @@
                         <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Color"/>
                         <Label Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding Color}"/>
                         <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Creation Date"/>
-                        <Label Grid.Row="2" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding CreationDate, StringFormat='{0:m/dd/yyyy}'}"/>
+                        <Label Grid.Row="2" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding CreationDate, StringFormat='{mm/dd/yyyy}'}"/>
                     </Grid>
                 </StackLayout>
             </DataTemplate>

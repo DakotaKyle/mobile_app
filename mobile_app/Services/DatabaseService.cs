@@ -49,7 +49,7 @@ namespace mobile_app.Services
         public static async Task RemoveGadget(int id)
         {
             await Init();
-            await _db.DeleteAsync(id);
+            await _db.DeleteAsync<Gadget>(id);
         }
 
         public static async Task<IEnumerable<Gadget>> GetGadgets()
@@ -94,6 +94,7 @@ namespace mobile_app.Services
                 StartNotification = notificationStart,
                 Notes = notes
             };
+
             await _db.InsertAsync(widget);
             var id = widget.Id; // Returns widget ID.
         }
@@ -108,9 +109,9 @@ namespace mobile_app.Services
         {
             await Init();
 
-            var widget = await _db.Table<Widget>().Where(i => i.GadgetId == gadgetId).ToListAsync();
+            var widgets = await _db.Table<Widget>().Where(i => i.GadgetId == gadgetId).ToListAsync();
 
-            return widget;
+            return widgets;
         }
 
         public static async Task<IEnumerable<Widget>> GetWidgets()
