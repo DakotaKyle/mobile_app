@@ -4,10 +4,8 @@
              x:Class="mobile_app.Views.AppSettings">
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="ClearPrefrences" Text="Clear Prefrences" Clicked="ClearPrefrences_Clicked"/>
             <Button x:Name="LoadSampleData" Text="Load Sample Data" Clicked="LoadSampleData_Clicked"/>
             <Button x:Name="ClearSampleData" Text="Clear Sample Data" Clicked="ClearSampleData_Clicked"/>
-            <Button x:Name="Notifications" Text="Notifications" Clicked="Notifications_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

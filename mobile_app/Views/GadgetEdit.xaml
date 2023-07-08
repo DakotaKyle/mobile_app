@@ -4,7 +4,6 @@
              x:Class="mobile_app.Views.GadgetEdit">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="SaveGadget" Text="Save" Clicked="SaveGadget_Clicked"/>
-        <ToolbarItem x:Name="CancelGadget" Text="Cancel" Clicked="CancelGadget_Clicked"/>
         <ToolbarItem x:Name="DeleteGadget" Text="Delete" Clicked="DeleteGadget_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

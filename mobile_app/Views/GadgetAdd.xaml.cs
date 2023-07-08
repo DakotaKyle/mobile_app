@@ -35,10 +35,5 @@ namespace mobile_app.Views
             await DatabaseService.AddGadget(GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date);
             await Navigation.PopAsync();
         }
-
-        private async void CancelGadget_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
     }
 }

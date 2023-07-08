@@ -51,11 +51,6 @@ namespace mobile_app.Views
             await Navigation.PopAsync();
         }
 
-        private async void CancelWidget_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
-
         private async void DeleteWidget_Clicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Delete Widget?", "Delete this Widget?", "Yes", "No");

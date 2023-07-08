@@ -47,11 +47,6 @@ namespace mobile_app.Views
             await Navigation.PopAsync();
         }
 
-        async void CancelGadget_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
-
         async void DeleteGadget_Clicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Delete Gadget and related Widgets?", "Delete this Gadget?", "Yes", "No");

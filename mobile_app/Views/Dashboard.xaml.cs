@@ -37,16 +37,22 @@ namespace mobile_app.Views
                     }
                 }
             }
+
+            GadgetCollectionView.ItemsSource = await DatabaseService.GetGadgets();
+        }
+
+        private async void GadgetCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection != null)
+            {
+                Gadget gadget = (Gadget)e.CurrentSelection.FirstOrDefault();
+                await Navigation.PushAsync(new GadgetEdit(gadget));
+            }
         }
 
         private async void AddGadget_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new GadgetAdd());
-        }
-
-        private async void ViewGadget_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new GadgetList());
         }
 
         private async void Settings_Clicked(object sender, EventArgs e)

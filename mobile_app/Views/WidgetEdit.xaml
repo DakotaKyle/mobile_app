@@ -5,7 +5,6 @@
              Title="Edit/delete Widget">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="SaveWidget" Text="Save" Clicked="SaveWidget_Clicked"/>
-        <ToolbarItem x:Name="CancelWidget" Text="Cancel" Clicked="CancelWidget_Clicked"/>
         <ToolbarItem x:Name="DeleteWidget" Text="Delete" Clicked="DeleteWidget_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

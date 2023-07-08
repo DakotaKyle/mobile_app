@@ -14,17 +14,12 @@ namespace mobile_app.Views
             InitializeComponent();
         }
 
-        private void ClearPrefrences_Clicked(object sender, EventArgs e)
-        {
-            Preferences.Clear();
-        }
-
         async void LoadSampleData_Clicked(object sender, EventArgs e)
         {
             if (Settings.FirstRun)
             {
                 await DatabaseService.LoadSampleData();
-                
+
                 Settings.FirstRun = false;
 
                 await Navigation.PopToRootAsync();
@@ -35,11 +30,7 @@ namespace mobile_app.Views
         private async void ClearSampleData_Clicked(object sender, EventArgs e)
         {
             await DatabaseService.ClearSampleData();
-        }
-
-        private void Notifications_Clicked(object sender, EventArgs e)
-        {
-
+            Preferences.Clear();
         }
     }
 }

@@ -13,9 +13,11 @@ namespace mobile_app.Services
     {
         private static SQLiteAsyncConnection _db;
 
+        #region Init Method
+
         static async Task Init()
         {
-            if(_db != null) // Don't create the database if it already exists.
+            if (_db != null) // Don't create the database if it already exists.
             {
                 return;
             }
@@ -28,6 +30,8 @@ namespace mobile_app.Services
             await _db.CreateTableAsync<Gadget>();
             await _db.CreateTableAsync<Widget>();
         }
+
+        #endregion
 
         #region Gadget methods
 
@@ -43,7 +47,6 @@ namespace mobile_app.Services
             };
 
             await _db.InsertAsync(gadget);
-            var id = gadget.Id; //returns gadget ID.
         }
 
         public static async Task RemoveGadget(int id)
@@ -96,7 +99,6 @@ namespace mobile_app.Services
             };
 
             await _db.InsertAsync(widget);
-            var id = widget.Id; // Returns widget ID.
         }
 
         public static async Task RemoveWidget(int id)

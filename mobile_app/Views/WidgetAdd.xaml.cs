@@ -42,15 +42,5 @@ namespace mobile_app.Views
             await DatabaseService.AddWidget(_selectedGadgetId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled, NoteEditor.Text);
             await Navigation.PopAsync();
         }
-
-        private async void CancelWidget_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
-
-        private async void Home_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopToRootAsync();
-        }
     }
 }
