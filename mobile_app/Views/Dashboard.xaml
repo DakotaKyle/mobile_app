@@ -6,18 +6,18 @@
         <Label Text="Degree Plan" FontSize="Medium"/>
         </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddGadget" Text="Add Class" Clicked="AddGadget_Clicked"/>
+        <ToolbarItem x:Name="AddCourse" Text="Add Class" Clicked="AddCourse_Clicked"/>
         <ToolbarItem x:Name="Settings" Text="Settings" Clicked="Settings_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         
-        <!-- Display Gadgets in a list -->
+        <!-- Display Courses in a list -->
         
-        <CollectionView x:Name="GadgetCollectionView"
-                    ItemsSource="{Binding Gadgets}"
-                    EmptyView="No Gadgets to display"
+        <CollectionView x:Name="CourseCollectionView"
+                    ItemsSource="{Binding Courses}"
+                    EmptyView="No Courses to display"
                     SelectionMode="Single"
-                    SelectionChanged="GadgetCollectionView_SelectionChanged">
+                    SelectionChanged="CourseCollectionView_SelectionChanged">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout
                 Orientation="Vertical" ItemSpacing="10">

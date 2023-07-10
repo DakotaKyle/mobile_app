@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_app.Views.WidgetEdit"
-             Title="Edit/delete Widget">
+             x:Class="mobile_app.Views.AssessmentEdit"
+             Title="Edit Assessments">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="SaveWidget" Text="Save" Clicked="SaveWidget_Clicked"/>
-        <ToolbarItem x:Name="DeleteWidget" Text="Delete" Clicked="DeleteWidget_Clicked"/>
+        <ToolbarItem x:Name="SaveAssessment" Text="Save" Clicked="SaveAssessment_Clicked"/>
+        <ToolbarItem x:Name="DeleteAssessment" Text="Delete" Clicked="DeleteAssessment_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

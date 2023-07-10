@@ -19,22 +19,37 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\CourseAdd.xaml.cs">
+      <DependentUpon>CourseAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CourseEdit.xaml.cs">
+      <DependentUpon>CourseEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AssessmentAdd.xaml.cs">
+      <DependentUpon>AssessmentAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AssessmentEdit.xaml.cs">
+      <DependentUpon>AssessmentEdit.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\AppSettings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dashboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\GadgetAdd.xaml">
+    <EmbeddedResource Update="Views\CourseAdd.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\GadgetEdit.xaml">
+    <EmbeddedResource Update="Views\CourseEdit.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\WidgetAdd.xaml">
+    <EmbeddedResource Update="Views\AssessmentAdd.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\WidgetEdit.xaml">
+    <EmbeddedResource Update="Views\AssessmentEdit.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

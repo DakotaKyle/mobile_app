@@ -12,29 +12,29 @@ using Xamarin.Forms.Xaml;
 namespace mobile_app.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WidgetEdit : ContentPage
+    public partial class AssessmentEdit : ContentPage
     {
-        private readonly int _selectedWidgetId;
+        private readonly int _selectedAssessmentId;
 
-        public WidgetEdit()
+        public AssessmentEdit()
         {
             InitializeComponent();
         }
 
-        public WidgetEdit(Widget selectedWidget)
+        public AssessmentEdit(Assessment selectedAssessment)
         {
             InitializeComponent();
 
-            _selectedWidgetId = selectedWidget.Id;
-            WidgetId.Text = selectedWidget.Id.ToString();
-            WidgetName.Text = selectedWidget.Name.ToString();
-            WidgetColorPicker.SelectedItem = selectedWidget.Color;
-            NotesEditor.Text = selectedWidget.Notes;
-            CreationDatePicker.Date = selectedWidget.CreationDate;
-            Notification.IsToggled = selectedWidget.StartNotification;
+            _selectedAssessmentId = selectedAssessment.Id;
+            WidgetId.Text = selectedAssessment.Id.ToString();
+            WidgetName.Text = selectedAssessment.Name.ToString();
+            WidgetColorPicker.SelectedItem = selectedAssessment.Color;
+            NotesEditor.Text = selectedAssessment.Notes;
+            CreationDatePicker.Date = selectedAssessment.CreationDate;
+            Notification.IsToggled = selectedAssessment.StartNotification;
         }
 
-        private async void SaveWidget_Clicked(object sender, EventArgs e)
+        private async void SaveAssessment_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(WidgetName.Text))
             {
@@ -47,11 +47,11 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.UpdateWidget(_selectedWidgetId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled, NotesEditor.Text);
+            await DatabaseService.UpdateAssessment(_selectedAssessmentId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled, NotesEditor.Text);
             await Navigation.PopAsync();
         }
 
-        private async void DeleteWidget_Clicked(object sender, EventArgs e)
+        private async void DeleteAssessment_Clicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Delete Widget?", "Delete this Widget?", "Yes", "No");
 
@@ -59,7 +59,7 @@ namespace mobile_app.Views
             {
                 var id = int.Parse(WidgetId.Text);
 
-                await DatabaseService.RemoveWidget(id);
+                await DatabaseService.RemoveAssessment(id);
 
                 await DisplayAlert("Widget deleted.", "Widget deleted", "OK");
             }

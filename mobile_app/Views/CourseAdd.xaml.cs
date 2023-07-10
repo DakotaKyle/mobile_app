@@ -11,35 +11,28 @@ using Xamarin.Forms.Xaml;
 namespace mobile_app.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WidgetAdd : ContentPage
+    public partial class CourseAdd : ContentPage
     {
-        private readonly int _selectedGadgetId;
-
-        public WidgetAdd()
+        public CourseAdd()
         {
             InitializeComponent();
         }
 
-        public WidgetAdd(int gadgetId)
+        private async void SaveGadget_Clicked(object sender, EventArgs e)
         {
-            InitializeComponent();
-            _selectedGadgetId = gadgetId;
-        }
-
-        private async void SaveWidget_Clicked(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(WidgetName.Text))
+            if (string.IsNullOrWhiteSpace(GadgetName.Text))
             {
                 await DisplayAlert("Missing name", "Please enter a name", "OK");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(WidgetColorPicker.SelectedItem.ToString()))
+
+            if (string.IsNullOrWhiteSpace(GadgetColorPicker.SelectedItem.ToString()))
             {
                 await DisplayAlert("Missing color", "Please enter a color", "OK");
                 return;
             }
 
-            await DatabaseService.AddWidget(_selectedGadgetId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled, NoteEditor.Text);
+            await DatabaseService.AddCourse(GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date);
             await Navigation.PopAsync();
         }
     }

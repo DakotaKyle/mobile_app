@@ -27,70 +27,70 @@ namespace mobile_app.Services
 
             _db = new SQLiteAsyncConnection(databasePath);
 
-            await _db.CreateTableAsync<Gadget>();
-            await _db.CreateTableAsync<Widget>();
+            await _db.CreateTableAsync<Course>();
+            await _db.CreateTableAsync<Assessment>();
         }
 
         #endregion
 
-        #region Gadget methods
+        #region Course methods
 
-        public static async Task AddGadget(string name, string color, DateTime creationDate)
+        public static async Task AddCourse(string name, string color, DateTime creationDate)
         {
             await Init();
 
-            var gadget = new Gadget()
+            var course = new Course()
             {
                 Name = name,
                 Color = color,
                 CreationDate = creationDate
             };
 
-            await _db.InsertAsync(gadget);
+            await _db.InsertAsync(course);
         }
 
-        public static async Task RemoveGadget(int id)
+        public static async Task RemoveCourse(int id)
         {
             await Init();
-            await _db.DeleteAsync<Gadget>(id);
+            await _db.DeleteAsync<Course>(id);
         }
 
-        public static async Task<IEnumerable<Gadget>> GetGadgets()
-        {
-            await Init();
-
-            var gadgets = await _db.Table<Gadget>().ToListAsync();
-            return gadgets;
-        }
-
-        public static async Task UpdateGadget(int id, string name, string color, DateTime creationDate)
+        public static async Task<IEnumerable<Course>> GetCourses()
         {
             await Init();
 
-            var gadgetQuery = await _db.Table<Gadget>()
+            var courses = await _db.Table<Course>().ToListAsync();
+            return courses;
+        }
+
+        public static async Task UpdateCourse(int id, string name, string color, DateTime creationDate)
+        {
+            await Init();
+
+            var courseQuery = await _db.Table<Course>()
                 .Where(i => i.Id == id)
                 .FirstOrDefaultAsync();
 
-            if (gadgetQuery != null)
+            if (courseQuery != null)
             {
-                gadgetQuery.Name = name;
-                gadgetQuery.Color = color;
-                gadgetQuery.CreationDate = creationDate;
+                courseQuery.Name = name;
+                courseQuery.Color = color;
+                courseQuery.CreationDate = creationDate;
 
-                await _db.UpdateAsync(gadgetQuery);
+                await _db.UpdateAsync(courseQuery);
             }
         }
 
         #endregion
 
-        #region Widget methods
+        #region Assessment methods
 
-        public static async Task AddWidget(int gadgetId, string name, string color, DateTime creationDate, bool notificationStart, string notes)
+        public static async Task AddAssessment(int courseId, string name, string color, DateTime creationDate, bool notificationStart, string notes)
         {
             await Init();
-            var widget = new Widget()
+            var assessment = new Assessment()
             {
-                GadgetId = gadgetId,
+                CourseId = courseId,
                 Name = name,
                 Color = color,
                 CreationDate = creationDate,
@@ -98,49 +98,49 @@ namespace mobile_app.Services
                 Notes = notes
             };
 
-            await _db.InsertAsync(widget);
+            await _db.InsertAsync(assessment);
         }
 
-        public static async Task RemoveWidget(int id)
+        public static async Task RemoveAssessment(int id)
         {
             await Init();
-            await _db.DeleteAsync<Widget>(id);
+            await _db.DeleteAsync<Assessment>(id);
         }
 
-        public static async Task<IEnumerable<Widget>> GetWidgets(int gadgetId)
-        {
-            await Init();
-
-            var widgets = await _db.Table<Widget>().Where(i => i.GadgetId == gadgetId).ToListAsync();
-
-            return widgets;
-        }
-
-        public static async Task<IEnumerable<Widget>> GetWidgets()
-        {
-            await Init();
-            var widgets = await _db.Table<Widget>().ToListAsync();
-
-            return widgets;
-        }
-
-        public static async Task UpdateWidget(int id, string name, string color, DateTime creationDate, bool notificationStart, string notes)
+        public static async Task<IEnumerable<Assessment>> GetAssessments(int courseId)
         {
             await Init();
 
-            var widgetQuerry = await _db.Table<Widget>()
+            var courses = await _db.Table<Assessment>().Where(i => i.CourseId == courseId).ToListAsync();
+
+            return courses;
+        }
+
+        public static async Task<IEnumerable<Assessment>> GetAssessments()
+        {
+            await Init();
+            var assessments = await _db.Table<Assessment>().ToListAsync();
+
+            return assessments;
+        }
+
+        public static async Task UpdateAssessment(int id, string name, string color, DateTime creationDate, bool notificationStart, string notes)
+        {
+            await Init();
+
+            var assessmentQuerry = await _db.Table<Assessment>()
                 .Where(i => i.Id == id)
                 .FirstOrDefaultAsync();
 
-            if (widgetQuerry != null)
+            if (assessmentQuerry != null)
             {
-                widgetQuerry.Name = name;
-                widgetQuerry.Color = color;
-                widgetQuerry.CreationDate = creationDate;
-                widgetQuerry.StartNotification = notificationStart;
-                widgetQuerry.Notes = notes;
+                assessmentQuerry.Name = name;
+                assessmentQuerry.Color = color;
+                assessmentQuerry.CreationDate = creationDate;
+                assessmentQuerry.StartNotification = notificationStart;
+                assessmentQuerry.Notes = notes;
 
-                await _db.UpdateAsync(widgetQuerry);
+                await _db.UpdateAsync(assessmentQuerry);
             }
         }
 
@@ -152,33 +152,33 @@ namespace mobile_app.Services
         {
             await Init();
 
-            Gadget gadget = new Gadget()
+            Course course = new Course()
             {
                 Name = "Gadget 1",
                 Color = "Teal",
                 CreationDate = DateTime.Today.Date
             };
 
-            await _db.InsertAsync(gadget);
+            await _db.InsertAsync(course);
 
-            Widget widget = new Widget()
+            Assessment assessment = new Assessment()
             {
                 Name = "Widget 1",
                 Color = "Blue",
                 CreationDate = DateTime.Today.Date,
                 StartNotification = true,
-                GadgetId = gadget.Id
+                CourseId = course.Id
             };
 
-            await _db.InsertAsync(widget);
+            await _db.InsertAsync(assessment);
         }
 
         public static async Task ClearSampleData()
         {
             await Init();
 
-            await _db.DropTableAsync<Widget>();
-            await _db.DropTableAsync<Gadget>();
+            await _db.DropTableAsync<Assessment>();
+            await _db.DropTableAsync<Course>();
             _db = null;
         }
 

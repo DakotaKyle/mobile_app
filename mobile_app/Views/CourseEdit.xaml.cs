@@ -11,27 +11,27 @@ using Xamarin.Forms.Xaml;
 namespace mobile_app.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class GadgetEdit : ContentPage
+    public partial class CourseEdit : ContentPage
     {
 
         private readonly int _selectedGadgetId;
 
-        public GadgetEdit()
+        public CourseEdit()
         {
             InitializeComponent();
         }
-        public GadgetEdit(Gadget gadget)
+        public CourseEdit(Course course)
         {
             InitializeComponent();
 
-            _selectedGadgetId = gadget.Id;
-            GadgetId.Text = gadget.Id.ToString();
-            GadgetName.Text = gadget.Name;
-            GadgetColorPicker.SelectedItem = gadget.Color;
-            CreationDatePicker.Date = gadget.CreationDate;
+            _selectedGadgetId = course.Id;
+            GadgetId.Text = course.Id.ToString();
+            GadgetName.Text = course.Name;
+            GadgetColorPicker.SelectedItem = course.Color;
+            CreationDatePicker.Date = course.CreationDate;
         }
 
-        async void SaveGadget_Clicked(object sender, EventArgs e)
+        async void SaveCourse_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(GadgetName.Text))
             {
@@ -43,11 +43,11 @@ namespace mobile_app.Views
                 await DisplayAlert("Missing color", "Please enter a color", "OK");
             }
 
-            await DatabaseService.UpdateGadget(_selectedGadgetId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
+            await DatabaseService.UpdateCourse(_selectedGadgetId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
             await Navigation.PopAsync();
         }
 
-        async void DeleteGadget_Clicked(object sender, EventArgs e)
+        async void DeleteCourse_Clicked(object sender, EventArgs e)
         {
             var answer = await DisplayAlert("Delete Gadget and related Widgets?", "Delete this Gadget?", "Yes", "No");
 
@@ -55,7 +55,7 @@ namespace mobile_app.Views
             {
                 var id = _selectedGadgetId;
                 
-                await DatabaseService.RemoveGadget(id);
+                await DatabaseService.RemoveCourse(id);
 
                 await DisplayAlert("Gadget deleted.", "Gadget deleted", "OK");
             }

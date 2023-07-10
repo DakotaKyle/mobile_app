@@ -19,40 +19,41 @@ namespace mobile_app.Views
             InitializeComponent();
         }
 
-        protected override async void OnAppearing() // Handles Notifications.
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            var widgetList = await DatabaseService.GetWidgets();
+            var AssessmentList = await DatabaseService.GetAssessments();
             var notifyRandom = new Random();
             var notifyId = notifyRandom.Next(1000);
 
-            foreach (Widget widgetRecord in widgetList )
+            // Handles Notifications.
+            foreach (Assessment assessmentRecord in AssessmentList )
             {
-                if (widgetRecord.StartNotification == true)
+                if (assessmentRecord.StartNotification == true)
                 {
-                    if (widgetRecord.CreationDate == DateTime.Today)
+                    if (assessmentRecord.CreationDate == DateTime.Today)
                     {
-                        CrossLocalNotifications.Current.Show("Notice", $"{widgetRecord.Name} begins today!", notifyId);
+                        CrossLocalNotifications.Current.Show("Notice", $"{assessmentRecord.Name} begins today!", notifyId);
                     }
                 }
             }
-
-            GadgetCollectionView.ItemsSource = await DatabaseService.GetGadgets();
+            // Source for CollectionView
+            CourseCollectionView.ItemsSource = await DatabaseService.GetCourses();
         }
 
-        private async void GadgetCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void CourseCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection != null)
             {
-                Gadget gadget = (Gadget)e.CurrentSelection.FirstOrDefault();
-                await Navigation.PushAsync(new GadgetEdit(gadget));
+                Course course = (Course)e.CurrentSelection.FirstOrDefault();
+                await Navigation.PushAsync(new CourseEdit(course));
             }
         }
 
-        private async void AddGadget_Clicked(object sender, EventArgs e)
+        private async void AddCourse_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new GadgetAdd());
+            await Navigation.PushAsync(new CourseAdd());
         }
 
         private async void Settings_Clicked(object sender, EventArgs e)
