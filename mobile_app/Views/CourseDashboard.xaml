@@ -1,19 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_app.Views.Dashboard">
+             x:Class="mobile_app.Views.CourseDashboard">
+    <NavigationPage.TitleView>
+        <Label Text="Degree Plan" FontSize="Medium"/>
+    </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="AddTerm" Text="Add Term" Clicked="AddTerm_Clicked"/>
-        <ToolbarItem x:Name="Settings" Text="Settings" Clicked="Settings_Clicked"/>
+        <ToolbarItem x:Name="AddCourse" Text="Add Class" Clicked="AddCourse_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
 
         <!-- Display Courses in a list -->
 
-        <CollectionView x:Name="TermCollectionView"
-                    ItemsSource="{Binding Terms}"
-                    EmptyView="No Terms to display"
-                    SelectionMode="Single">
+        <CollectionView x:Name="CourseCollectionView"
+                    ItemsSource="{Binding Courses}"
+                    EmptyView="No Courses to display"
+                    SelectionMode="Single"
+                    SelectionChanged="CourseCollectionView_SelectionChanged">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout
                 Orientation="Vertical" ItemSpacing="10">
@@ -39,10 +42,10 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Name"/>
                             <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding Name}"/>
-                            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Start Date"/>
-                            <Label Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding StartDate, StringFormat='{mm/dd/yyyy}'}"/>
-                            <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="End Date"/>
-                            <Label Grid.Row="2" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding EndDate, StringFormat='{mm/dd/yyyy}'}"/>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Color"/>
+                            <Label Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding Color}"/>
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Creation Date"/>
+                            <Label Grid.Row="2" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding CreationDate, StringFormat='{mm/dd/yyyy}'}"/>
                         </Grid>
                     </StackLayout>
                 </DataTemplate>

@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_app.Views.CourseEdit">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="SaveGadget" Text="Save" Clicked="SaveCourse_Clicked"/>
-        <ToolbarItem x:Name="DeleteGadget" Text="Delete" Clicked="DeleteCourse_Clicked"/>
+        <ToolbarItem x:Name="SaveCourse" Text="Save" Clicked="SaveCourse_Clicked"/>
+        <ToolbarItem x:Name="DeleteCourse" Text="Delete" Clicked="DeleteCourse_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -34,15 +34,15 @@
                 </Picker>
                 <DatePicker Grid.Row="3" Grid.Column="0" x:Name="CreationDatePicker"/>
             </Grid>
-            <Button x:Name="AddWidget" Text="Add Widget" Clicked="AddWidget_Clicked"/>
+            <Button x:Name="AddAssessment" Text="Add Assessment" Clicked="AddAssessment_Clicked"/>
             
             <!-- Display widgets in a list -->
 
-            <CollectionView x:Name="WidgetCollectionView"
-                            ItemsSource="{Binding Widgets}"
-                            EmptyView="No Widgets to display."
+            <CollectionView x:Name="AssessmentCollectionView"
+                            ItemsSource="{Binding Assessments}"
+                            EmptyView="No Assessments to display."
                             SelectionMode="Single"
-                            SelectionChanged="WidgetCollectionView_SelectionChanged">
+                            SelectionChanged="AssessmentCollectionView_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                 </CollectionView.ItemsLayout>

@@ -14,7 +14,7 @@ namespace mobile_app.Views
     public partial class CourseEdit : ContentPage
     {
 
-        private readonly int _selectedGadgetId;
+        private readonly int _selectedCourseId;
 
         public CourseEdit()
         {
@@ -24,7 +24,7 @@ namespace mobile_app.Views
         {
             InitializeComponent();
 
-            _selectedGadgetId = course.Id;
+            _selectedCourseId = course.Id;
             GadgetId.Text = course.Id.ToString();
             GadgetName.Text = course.Name;
             GadgetColorPicker.SelectedItem = course.Color;
@@ -43,7 +43,7 @@ namespace mobile_app.Views
                 await DisplayAlert("Missing color", "Please enter a color", "OK");
             }
 
-            await DatabaseService.UpdateCourse(_selectedGadgetId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
+            await DatabaseService.UpdateCourse(_selectedCourseId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
             await Navigation.PopAsync();
         }
 
@@ -53,37 +53,37 @@ namespace mobile_app.Views
 
             if (answer == true)
             {
-                var id = _selectedGadgetId;
+                var id = _selectedCourseId;
                 
                 await DatabaseService.RemoveCourse(id);
 
-                await DisplayAlert("Gadget deleted.", "Gadget deleted", "OK");
+                await DisplayAlert("Course deleted.", "Course deleted", "OK");
             }
 
             await Navigation.PopAsync();
         }
 
-        async void AddWidget_Clicked(object sender, EventArgs e)
+        async void AddAssessment_Clicked(object sender, EventArgs e)
         {
-            var gadgetId = _selectedGadgetId;
+            var courseId = _selectedCourseId;
 
-            await Navigation.PushAsync(new WidgetAdd(gadgetId));
+            await Navigation.PushAsync(new AssessmentAdd(courseId));
         }
 
-        async void WidgetCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        async void AssessmentCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var widget = (Widget)e.CurrentSelection.FirstOrDefault();
+            var assessment = (Assessment)e.CurrentSelection.FirstOrDefault();
 
             if (e.CurrentSelection != null)
             {
-                await Navigation.PushAsync(new WidgetEdit(widget));
+                await Navigation.PushAsync(new AssessmentEdit(assessment));
             }
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            WidgetCollectionView.ItemsSource = await DatabaseService.GetWidgets();
+            AssessmentCollectionView.ItemsSource = await DatabaseService.GetAssessments();
         }
     }
 }

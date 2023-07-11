@@ -23,12 +23,13 @@ namespace mobile_app.Services
             }
 
             //get an absolute path to the database file.
-            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "Gadgets.db");
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "Terms.db");
 
             _db = new SQLiteAsyncConnection(databasePath);
 
             await _db.CreateTableAsync<Course>();
             await _db.CreateTableAsync<Assessment>();
+            await _db.CreateTableAsync<Term>();
         }
 
         #endregion
@@ -146,6 +147,56 @@ namespace mobile_app.Services
 
         #endregion
 
+        #region Term Methods
+
+        public static async Task AddTerm(int courseId, string name, DateTime startDate, DateTime endDate)
+        {
+            await Init();
+            var term = new Term()
+            {
+                CourseId = courseId,
+                Name = name,
+                StartDate = startDate,
+                EndDate = endDate
+            };
+
+            await _db.InsertAsync(term);
+        }
+
+        public static async Task RemoveTerm(int id)
+        {
+            await Init();
+            await _db.DeleteAsync<Term>(id);
+        }
+
+        public static async Task<IEnumerable<Term>> GetTerms()
+        {
+            await Init();
+
+            var terms = await _db.Table<Term>().ToListAsync();
+            return terms;
+        }
+
+        public static async Task UpdateTerm(int id, string name, DateTime startDate, DateTime endDate)
+        {
+            await Init();
+
+            var termQuerry = await _db.Table<Term>()
+                .Where(i => i.Id == id)
+                .FirstOrDefaultAsync();
+
+            if (termQuerry != null)
+            {
+                termQuerry.Name = name;
+                termQuerry.StartDate = startDate;
+                termQuerry.StartDate = endDate;
+
+                await _db.UpdateAsync(termQuerry);
+            }
+        }
+
+        #endregion
+
         #region Demo Data
 
         public static async Task LoadSampleData()
@@ -171,7 +222,20 @@ namespace mobile_app.Services
             };
 
             await _db.InsertAsync(assessment);
+
+            Term term = new Term()
+            {
+                Name = "Term 1",
+                StartDate = DateTime.Today.Date,
+                EndDate = DateTime.Today.Date,
+            };
+
+            await _db.InsertAsync(term);
         }
+
+        #endregion
+
+        #region Settings
 
         public static async Task ClearSampleData()
         {
@@ -179,9 +243,11 @@ namespace mobile_app.Services
 
             await _db.DropTableAsync<Assessment>();
             await _db.DropTableAsync<Course>();
+            await _db.DropTableAsync<Term>();
             _db = null;
         }
 
         #endregion
+
     }
 }
