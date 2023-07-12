@@ -36,12 +36,13 @@ namespace mobile_app.Services
 
         #region Course methods
 
-        public static async Task AddCourse(string name, bool status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
+        public static async Task AddCourse(int termId, string name, bool status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
         {
             await Init();
 
             var course = new Course()
             {
+                TermId = termId,
                 Name = name,
                 Status = status,
                 InstructorName = instructorName,

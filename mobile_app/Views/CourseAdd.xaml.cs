@@ -13,22 +13,24 @@ namespace mobile_app.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseAdd : ContentPage
     {
+        private readonly int _selectedTermId;
+
         public CourseAdd()
         {
             InitializeComponent();
         }
 
-        private async void SaveGadget_Clicked(object sender, EventArgs e)
+        public CourseAdd(int termId)
         {
-            if (string.IsNullOrWhiteSpace(GadgetName.Text))
+            InitializeComponent();
+            _selectedTermId = termId;
+        }
+
+        private async void SaveCourse_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(courseName.Text))
             {
                 await DisplayAlert("Missing name", "Please enter a name", "OK");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(GadgetColorPicker.SelectedItem.ToString()))
-            {
-                await DisplayAlert("Missing color", "Please enter a color", "OK");
                 return;
             }
 

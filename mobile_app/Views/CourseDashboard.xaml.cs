@@ -63,7 +63,8 @@ namespace mobile_app.Views
 
         private async void AddCourse_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CourseAdd());
+            var termId = _selectedTermId;
+            await Navigation.PushAsync(new CourseAdd(termId));
         }
     }
 }
