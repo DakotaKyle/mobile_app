@@ -32,7 +32,7 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.AddCourse(GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date);
+            //await DatabaseService.AddCourse(GadgetName.Text, CreationDatePicker.Date);
             await Navigation.PopAsync();
         }
     }

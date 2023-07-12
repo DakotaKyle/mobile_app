@@ -36,15 +36,19 @@ namespace mobile_app.Services
 
         #region Course methods
 
-        public static async Task AddCourse(string name, string color, DateTime creationDate)
+        public static async Task AddCourse(string name, bool status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
         {
             await Init();
 
             var course = new Course()
             {
                 Name = name,
-                Color = color,
-                CreationDate = creationDate
+                Status = status,
+                InstructorName = instructorName,
+                PhoneNumber = phoneNumber,
+                Email = email,
+                StartDate = startDate,
+                EndDate = endDate
             };
 
             await _db.InsertAsync(course);
@@ -73,7 +77,7 @@ namespace mobile_app.Services
             return courses;
         }
 
-        public static async Task UpdateCourse(int id, string name, string color, DateTime creationDate)
+        public static async Task UpdateCourse(int id, string name, bool status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
         {
             await Init();
 
@@ -84,8 +88,12 @@ namespace mobile_app.Services
             if (courseQuery != null)
             {
                 courseQuery.Name = name;
-                courseQuery.Color = color;
-                courseQuery.CreationDate = creationDate;
+                courseQuery.Status = status;
+                courseQuery.InstructorName = instructorName;
+                courseQuery.PhoneNumber = phoneNumber;
+                courseQuery.Email = email;
+                courseQuery.StartDate = startDate;
+                courseQuery.EndDate = endDate;
 
                 await _db.UpdateAsync(courseQuery);
             }
@@ -214,9 +222,13 @@ namespace mobile_app.Services
 
             Course course = new Course()
             {
-                Name = "Gadget 1",
-                Color = "Teal",
-                CreationDate = DateTime.Today.Date
+                Name = "Mobile Application Development",
+                Status = true,
+                InstructorName = "Dakota Kyle",
+                PhoneNumber = "1234567890",
+                Email = "dkyle18@wgu.edu",
+                StartDate = DateTime.Today.Date,
+                EndDate = DateTime.Today.AddDays(14).Date,
             };
 
             await _db.InsertAsync(course);

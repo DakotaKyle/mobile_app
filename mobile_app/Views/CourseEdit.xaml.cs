@@ -27,8 +27,6 @@ namespace mobile_app.Views
             _selectedCourseId = course.Id;
             GadgetId.Text = course.Id.ToString();
             GadgetName.Text = course.Name;
-            GadgetColorPicker.SelectedItem = course.Color;
-            CreationDatePicker.Date = course.CreationDate;
         }
 
         async void SaveCourse_Clicked(object sender, EventArgs e)
@@ -43,7 +41,7 @@ namespace mobile_app.Views
                 await DisplayAlert("Missing color", "Please enter a color", "OK");
             }
 
-            await DatabaseService.UpdateCourse(_selectedCourseId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
+           // await DatabaseService.UpdateCourse(_selectedCourseId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
             await Navigation.PopAsync();
         }
 

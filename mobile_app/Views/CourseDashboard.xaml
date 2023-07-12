@@ -28,8 +28,10 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Grid Padding="5" RowSpacing="1" ColumnSpacing="22" BackgroundColor="WhiteSmoke">
+                        <Grid Padding="5" RowSpacing="1" ColumnSpacing="10" BackgroundColor="WhiteSmoke">
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -40,12 +42,20 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Name"/>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Class Name"/>
                             <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding Name}"/>
-                            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Color"/>
-                            <Label Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding Color}"/>
-                            <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Creation Date"/>
-                            <Label Grid.Row="2" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding CreationDate, StringFormat='{mm/dd/yyyy}'}"/>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Status"/>
+                            <Label Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding Status}"/>
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Instructor"/>
+                            <Label Grid.Row="2" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding InstructorName}"/>
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Phone"/>
+                            <Label Grid.Row="3" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding PhoneNumber}"/>
+                            <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Email"/>
+                            <Label Grid.Row="4" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding Email}"/>
+                            <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="Start Date"/>
+                            <Label Grid.Row="5" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding StartDate, StringFormat='{mm/dd/yyyy}'}"/>
+                            <Label Grid.Row="6" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" FontAttributes="Bold" Text="End Date"/>
+                            <Label Grid.Row="6" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding EndDate, StringFormat='{mm/dd/yyyy}'}"/>
                         </Grid>
                     </StackLayout>
                 </DataTemplate>
