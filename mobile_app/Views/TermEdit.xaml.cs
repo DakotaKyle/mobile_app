@@ -17,5 +17,10 @@ namespace mobile_app.Views
 		{
 			InitializeComponent ();
 		}
+
+		public TermEdit(int termId)
+		{
+			InitializeComponent ();
+		}
 	}
 }

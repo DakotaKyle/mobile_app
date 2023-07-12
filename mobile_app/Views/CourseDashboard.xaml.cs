@@ -66,5 +66,27 @@ namespace mobile_app.Views
             var termId = _selectedTermId;
             await Navigation.PushAsync(new CourseAdd(termId));
         }
+
+        private async void EditTerm_Clicked(object sender, EventArgs e)
+        {
+            var termId = _selectedTermId;
+            await Navigation.PushAsync(new TermEdit(termId));
+        }
+
+        private async void DeleteTerm_Clicked(object sender, EventArgs e)
+        {
+            var answer = await DisplayAlert("Delete Term and associated Courses?", "Delete this Term?", "Yes", "No");
+
+            if (answer == true)
+            {
+                var id = _selectedTermId;
+
+                await DatabaseService.RemoveTerm(id);
+
+                await DisplayAlert("Term deleted.", "Term and all related courses have been deleted", "OK");
+            }
+
+            await Navigation.PopAsync();
+        }
     }
 }

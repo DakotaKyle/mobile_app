@@ -181,10 +181,10 @@ namespace mobile_app.Services
             await _db.InsertAsync(term);
         }
 
-        public static async Task RemoveTerm(int id)
+        public static async Task RemoveTerm(int termId)
         {
             await Init();
-            await _db.DeleteAsync<Term>(id);
+            await _db.DeleteAsync<Term>(termId);
         }
 
         public static async Task<IEnumerable<Term>> GetTerms()
