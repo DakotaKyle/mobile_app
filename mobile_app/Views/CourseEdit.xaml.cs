@@ -25,29 +25,48 @@ namespace mobile_app.Views
             InitializeComponent();
 
             _selectedCourseId = course.Id;
-            GadgetId.Text = course.Id.ToString();
-            GadgetName.Text = course.Name;
+            courseName.Text = course.Name;
+            CourseIsActive.IsToggled = course.Status;
+            instructorName.Text = course.InstructorName;
+            phone.Text = course.PhoneNumber;
+            email.Text = course.Email;
+            StartDatePicker.Date = course.StartDate;
+            EndDatePicker.Date = course.EndDate;
         }
 
         async void SaveCourse_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(GadgetName.Text))
+            if (string.IsNullOrEmpty(courseName.Text))
             {
-                await DisplayAlert("Missing name", "Please enter a name", "OK");
+                await DisplayAlert("Missing course name", "Please enter a name", "OK");
+                return;
             }
 
-            if (string.IsNullOrWhiteSpace(GadgetColorPicker.SelectedItem.ToString()))
+            if (string.IsNullOrEmpty(instructorName.Text))
             {
-                await DisplayAlert("Missing color", "Please enter a color", "OK");
+                await DisplayAlert("Missing instructor name", "Please enter a name", "OK");
+                return;
             }
 
-           // await DatabaseService.UpdateCourse(_selectedCourseId, GadgetName.Text, GadgetColorPicker.SelectedItem.ToString(), DateTime.Parse(CreationDatePicker.Date.ToString()));
-            await Navigation.PopAsync();
+            if (string.IsNullOrEmpty(phone.Text))
+            {
+                await DisplayAlert("Missing a phone number", "Please enter a number", "OK");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(email.Text))
+            {
+                await DisplayAlert("Missing a email", "Please enter an email address", "OK");
+                return;
+            }
+
+            await DatabaseService.UpdateCourse(_selectedCourseId, courseName.Text, CourseIsActive.IsToggled, instructorName.Text, phone.Text, email.Text, StartDatePicker.Date, EndDatePicker.Date);
+           await Navigation.PopAsync();
         }
 
         async void DeleteCourse_Clicked(object sender, EventArgs e)
         {
-            var answer = await DisplayAlert("Delete Gadget and related Widgets?", "Delete this Gadget?", "Yes", "No");
+            var answer = await DisplayAlert("Delete Course and associated Assessments", "Delete this course and all of its assessments?", "Yes", "No");
 
             if (answer == true)
             {
@@ -55,7 +74,7 @@ namespace mobile_app.Views
                 
                 await DatabaseService.RemoveCourse(id);
 
-                await DisplayAlert("Course deleted.", "Course deleted", "OK");
+                await DisplayAlert("Course deleted.", "Course  and assessments deleted", "OK");
             }
 
             await Navigation.PopAsync();

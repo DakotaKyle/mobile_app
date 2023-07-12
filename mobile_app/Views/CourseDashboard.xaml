@@ -29,7 +29,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
-                        <Grid Padding="5" RowSpacing="1" ColumnSpacing="10" BackgroundColor="WhiteSmoke">
+                        <Grid Padding="5" RowSpacing="1" ColumnSpacing="10" BackgroundColor="AliceBlue">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
