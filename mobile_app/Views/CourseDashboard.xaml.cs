@@ -14,9 +14,19 @@ namespace mobile_app.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseDashboard : ContentPage
     {
+
+        private readonly int _selectedTermId;
+
         public CourseDashboard()
         {
             InitializeComponent();
+        }
+
+        public CourseDashboard(int termId)
+        {
+            InitializeComponent();
+
+            _selectedTermId = termId;
         }
 
         protected override async void OnAppearing()
@@ -39,7 +49,7 @@ namespace mobile_app.Views
                 }
             }
             // Source for CollectionView
-            CourseCollectionView.ItemsSource = await DatabaseService.GetCourses();
+            CourseCollectionView.ItemsSource = await DatabaseService.GetCourses(_selectedTermId);
         }
 
         private async void CourseCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)

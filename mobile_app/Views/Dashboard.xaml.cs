@@ -37,13 +37,13 @@ namespace mobile_app.Views
             await Navigation.PushAsync(new AppSettings());
         }
 
-     /*   private async void TermCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       private async void TermCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.CurrentSelection != null)
             {
                 Term term = (Term)e.CurrentSelection.FirstOrDefault();
-                await Navigation.PushAsync(new TermEdit(term));
+                await Navigation.PushAsync(new CourseDashboard(term.Id));
             }
-        } */
+        }
     }
 }

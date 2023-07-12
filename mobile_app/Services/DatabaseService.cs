@@ -64,6 +64,15 @@ namespace mobile_app.Services
             return courses;
         }
 
+        public static async Task<IEnumerable<Course>> GetCourses(int courseId)
+        {
+            await Init();
+
+            var courses = await _db.Table<Course>().Where(i => i.Id == courseId).ToListAsync();
+
+            return courses;
+        }
+
         public static async Task UpdateCourse(int id, string name, string color, DateTime creationDate)
         {
             await Init();

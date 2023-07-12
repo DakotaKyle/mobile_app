@@ -13,7 +13,8 @@
         <CollectionView x:Name="TermCollectionView"
                     ItemsSource="{Binding Terms}"
                     EmptyView="No Terms to display"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    SelectionChanged="TermCollectionView_SelectionChanged">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout
                 Orientation="Vertical" ItemSpacing="10">
