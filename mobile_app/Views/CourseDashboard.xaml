@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_app.Views.CourseDashboard">
     <NavigationPage.TitleView>
-        <Label Text="Degree Plan" FontSize="Small" FontAttributes="Bold"/>
+        <Label Text="Degree Plan" FontSize="Medium" FontAttributes="Bold"/>
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="AddCourse" Text="Add Class" Clicked="AddCourse_Clicked"/>
         <ToolbarItem x:Name="EditTerm" Text="Edit Term" Clicked="EditTerm_Clicked"/>
-        <ToolbarItem x:Name="DeleteTerm" Text="Delete Term" Clicked="DeleteTerm_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
 

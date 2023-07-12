@@ -223,6 +223,7 @@ namespace mobile_app.Services
 
             Course course = new Course()
             {
+                TermId = 1,
                 Name = "Mobile Application Development",
                 Status = true,
                 InstructorName = "Dakota Kyle",
