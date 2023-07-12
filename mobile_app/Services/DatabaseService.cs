@@ -69,11 +69,11 @@ namespace mobile_app.Services
             return courses;
         }
 
-        public static async Task<IEnumerable<Course>> GetCourses(int courseId)
+        public static async Task<IEnumerable<Course>> GetCourses(int termId)
         {
             await Init();
 
-            var courses = await _db.Table<Course>().Where(i => i.Id == courseId).ToListAsync();
+            var courses = await _db.Table<Course>().Where(i => i.TermId == termId).ToListAsync();
 
             return courses;
         }
@@ -247,6 +247,7 @@ namespace mobile_app.Services
 
             Term term = new Term()
             {
+                Id = 1,
                 Name = "Term 1",
                 StartDate = DateTime.Today.Date,
                 EndDate = DateTime.Today.Date,

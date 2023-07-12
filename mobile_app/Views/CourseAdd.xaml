@@ -24,7 +24,7 @@
                 <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Course Name"/>
                 <Entry Grid.Row="0" Grid.Column="1" x:Name="courseName" VerticalTextAlignment="Center" Text="{Binding Name}"/>
                 <Label Grid.Row="0" Grid.Column="2" FontSize="Small" FontAttributes="Bold" VerticalTextAlignment="Center" Text="Activate Course"/>
-                <Switch Grid.Row="0" Grid.Column="3" HorizontalOptions="End" IsToggled="False"/>
+                <Switch Grid.Row="0" Grid.Column="3" x:Name="CourseIsActive" HorizontalOptions="End" IsToggled="False"/>
                 <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Instructor"/>
                 <Entry Grid.Row="1" Grid.Column="1" x:Name="instructorName" VerticalTextAlignment="Center" Text="{Binding InstructorName}"/>
                 <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Phone"/>
