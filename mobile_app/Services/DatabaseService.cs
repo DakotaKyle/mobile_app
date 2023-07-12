@@ -221,7 +221,7 @@ namespace mobile_app.Services
         {
             await Init();
 
-            Course course = new Course()
+            Course course1 = new Course()
             {
                 TermId = 1,
                 Name = "Mobile Application Development",
@@ -233,18 +233,86 @@ namespace mobile_app.Services
                 EndDate = DateTime.Today.AddDays(14).Date,
             };
 
-            await _db.InsertAsync(course);
+            Course course2 = new Course()
+            {
+                TermId = 1,
+                Name = "Advanced Database Applications",
+                Status = false,
+                InstructorName = "Jeff Dean",
+                PhoneNumber = "1867530999",
+                Email = "jdean175@wgu.edu",
+                StartDate = DateTime.Today.AddDays(14).Date,
+                EndDate = DateTime.Today.AddDays(28).Date,
+            };
 
-            Assessment assessment = new Assessment()
+            await _db.InsertAsync(course2);
+
+            Course course3 = new Course()
+            {
+                TermId = 1,
+                Name = "Capstone Project",
+                Status = false,
+                InstructorName = "Sara Stewart",
+                PhoneNumber = "5847893652",
+                Email = "ssteward47@wgu.edu",
+                StartDate = DateTime.Today.AddDays(28).Date,
+                EndDate = DateTime.Today.AddDays(42).Date,
+            };
+
+            await _db.InsertAsync(course3);
+
+            Course course4 = new Course()
+            {
+                TermId = 1,
+                Name = "Cloud Computing",
+                Status = false,
+                InstructorName = "Sara Stewart",
+                PhoneNumber = "5847893652",
+                Email = "ssteward47@wgu.edu",
+                StartDate = DateTime.Today.AddDays(42).Date,
+                EndDate = DateTime.Today.AddDays(56).Date,
+            };
+
+            await _db.InsertAsync(course4);
+
+            Course course5 = new Course()
+            {
+                TermId = 1,
+                Name = "AI Algorithmns",
+                Status = false,
+                InstructorName = "Steve johnson",
+                PhoneNumber = "5847893652",
+                Email = "sjohnson87@wgu.edu",
+                StartDate = DateTime.Today.AddDays(56).Date,
+                EndDate = DateTime.Today.AddDays(70).Date,
+            };
+
+            await _db.InsertAsync(course5);
+
+            Course course6 = new Course()
+            {
+                TermId = 1,
+                Name = "Advanced Data Analysis",
+                Status = false,
+                InstructorName = "Jeff Dean",
+                PhoneNumber = "1867530999",
+                Email = "jdean175@wgu.edu",
+                StartDate = DateTime.Today.AddDays(70).Date,
+                EndDate = DateTime.Today.AddDays(84).Date,
+            };
+
+            await _db.InsertAsync(course6);
+
+            Assessment assessment1 = new Assessment()
             {
                 Name = "Widget 1",
                 Color = "Blue",
                 CreationDate = DateTime.Today.Date,
                 StartNotification = true,
-                CourseId = course.Id
+                CourseId = course1.Id
             };
 
-            await _db.InsertAsync(assessment);
+            await _db.InsertAsync(assessment1);
 
             Term term = new Term()
             {
