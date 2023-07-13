@@ -12,6 +12,5 @@ namespace mobile_app.Models
         public string Color { get; set; }
         public DateTime CreationDate { get; set; }
         public bool StartNotification { get; set; }
-        public string Notes { get; set; }
     }
 }

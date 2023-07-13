@@ -39,7 +39,7 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.AddAssessment(_selectedCourseId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled, NoteEditor.Text);
+            await DatabaseService.AddAssessment(_selectedCourseId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled);
             await Navigation.PopAsync();
         }
     }

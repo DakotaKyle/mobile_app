@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -60,8 +61,8 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.UpdateCourse(_selectedCourseId, courseName.Text, courseStatus.SelectedItem.ToString(), instructorName.Text, phone.Text, email.Text, StartDatePicker.Date, EndDatePicker.Date);
-           await Navigation.PopAsync();
+            await DatabaseService.UpdateCourse(_selectedCourseId, courseName.Text, courseStatus.SelectedItem.ToString(), instructorName.Text, phone.Text, email.Text, StartDatePicker.Date, EndDatePicker.Date, Notification.IsToggled, NotesEditor.Text);
+            await Navigation.PopAsync();
         }
 
         async void DeleteCourse_Clicked(object sender, EventArgs e)
@@ -101,6 +102,17 @@ namespace mobile_app.Views
         {
             base.OnAppearing();
             AssessmentCollectionView.ItemsSource = await DatabaseService.GetAssessments();
+        }
+
+        private async void ShareURL_Clicked(object sender, EventArgs e)
+        {
+            var text = NotesEditor.Text;
+
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Text = text,
+                Title = "Share Notes."
+            });
         }
     }
 }

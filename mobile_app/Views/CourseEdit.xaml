@@ -17,6 +17,9 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -24,7 +27,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Course Name"/>
                 <Entry Grid.Row="0" Grid.Column="1" x:Name="courseName" VerticalTextAlignment="Center" Text="{Binding Name}"/>
-                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Activate Course"/>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Course Status"/>
                 <Picker Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" x:Name="courseStatus">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
@@ -45,6 +48,12 @@
                 <DatePicker Grid.Row="5" Grid.Column="1" x:Name="StartDatePicker"/>
                 <Label Grid.Row="6" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date"/>
                 <DatePicker Grid.Row="6" Grid.Column="1" x:Name="EndDatePicker"/>
+                <Label Grid.Row="7" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notes"/>
+                <Editor Grid.Row="7" Grid.Column="1" x:Name="NotesEditor" Placeholder="Enter your notes here."/>
+                <Label Grid.Row="8" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Share"/>
+                <Button Grid.Row="8" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Text="Share URL" Font="Medium" x:Name="ShareURL" Clicked="ShareURL_Clicked"/>
+                <Label Grid.Row="9" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notifications"/>
+                <Switch Grid.Row="9" Grid.Column="1" x:Name="Notification" HorizontalOptions="End" IsToggled="True" VerticalOptions="Center"/>
             </Grid>
             <Button x:Name="AddAssessment" Text="Add Assessment" Clicked="AddAssessment_Clicked"/>
             

@@ -29,9 +29,7 @@ namespace mobile_app.Views
             WidgetId.Text = selectedAssessment.Id.ToString();
             WidgetName.Text = selectedAssessment.Name.ToString();
             WidgetColorPicker.SelectedItem = selectedAssessment.Color;
-            NotesEditor.Text = selectedAssessment.Notes;
             CreationDatePicker.Date = selectedAssessment.CreationDate;
-            Notification.IsToggled = selectedAssessment.StartNotification;
         }
 
         private async void SaveAssessment_Clicked(object sender, EventArgs e)
@@ -47,7 +45,7 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.UpdateAssessment(_selectedAssessmentId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled, NotesEditor.Text);
+            await DatabaseService.UpdateAssessment(_selectedAssessmentId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled);
             await Navigation.PopAsync();
         }
 
@@ -65,17 +63,6 @@ namespace mobile_app.Views
             }
 
             await Navigation.PopAsync();
-        }
-
-        private async void ShareURL_Clicked(object sender, EventArgs e)
-        {
-            var text = WidgetName.Text;
-
-            await Share.RequestAsync(new ShareTextRequest
-            {
-                Text = text,
-                Title = "Share Text."
-            });
         }
     }
 }

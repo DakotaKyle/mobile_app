@@ -16,6 +16,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -44,6 +46,10 @@
                 <DatePicker Grid.Row="5" Grid.Column="1" x:Name="StartDatePicker"/>
                 <Label Grid.Row="6" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date"/>
                 <DatePicker Grid.Row="6" Grid.Column="1" x:Name="EndDatePicker"/>
+                <Label Grid.Row="7" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notes"/>
+                <Editor Grid.Row="7" Grid.Column="1" Placeholder="Enter Notes Here" x:Name="NoteEditor"/>
+                <Label Grid.Row="8" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notify"/>
+                <Switch Grid.Row="8" Grid.Column="1" HorizontalOptions="End" IsToggled="True" x:Name="Notification"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

@@ -15,5 +15,7 @@ namespace mobile_app.Models
         public string Email { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public bool StartNotification { get; set; }
+        public string Notes { get; set; }
     }
 }

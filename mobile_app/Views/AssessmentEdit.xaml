@@ -42,10 +42,6 @@
                 </Picker>
                 <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Creation Date"/>
                 <DatePicker Grid.Row="3" Grid.Column="1" x:Name="CreationDatePicker"/>
-                <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notes"/>
-                <Editor Grid.Row="4" Grid.Column="1" x:Name="NotesEditor" Placeholder="Enter your notes here."/>
-                <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Share"/>
-                <Button Grid.Row="5" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Text="Share URL" Font="Medium" x:Name="ShareURL" Clicked="ShareURL_Clicked"/>
                 <Label Grid.Row="6" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="Notifications"/>
                 <Switch Grid.Row="6" Grid.Column="1" x:Name="Notification" HorizontalOptions="End" IsToggled="True" VerticalOptions="Center"/>
             </Grid>

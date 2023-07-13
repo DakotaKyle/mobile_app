@@ -36,7 +36,7 @@ namespace mobile_app.Services
 
         #region Course methods
 
-        public static async Task AddCourse(int termId, string name, string status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
+        public static async Task AddCourse(int termId, string name, string status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate, bool startNotification, string notes)
         {
             await Init();
 
@@ -49,7 +49,9 @@ namespace mobile_app.Services
                 PhoneNumber = phoneNumber,
                 Email = email,
                 StartDate = startDate,
-                EndDate = endDate
+                EndDate = endDate,
+                StartNotification = startNotification,
+                Notes = notes
             };
 
             await _db.InsertAsync(course);
@@ -78,7 +80,7 @@ namespace mobile_app.Services
             return courses;
         }
 
-        public static async Task UpdateCourse(int id, string name, string status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
+        public static async Task UpdateCourse(int id, string name, string status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate, bool startNotification, string notes)
         {
             await Init();
 
@@ -95,6 +97,8 @@ namespace mobile_app.Services
                 courseQuery.Email = email;
                 courseQuery.StartDate = startDate;
                 courseQuery.EndDate = endDate;
+                courseQuery.StartNotification = startNotification;
+                courseQuery.Notes = notes;
 
                 await _db.UpdateAsync(courseQuery);
             }
@@ -104,7 +108,7 @@ namespace mobile_app.Services
 
         #region Assessment methods
 
-        public static async Task AddAssessment(int courseId, string name, string color, DateTime creationDate, bool notificationStart, string notes)
+        public static async Task AddAssessment(int courseId, string name, string color, DateTime creationDate, bool startNotification)
         {
             await Init();
             var assessment = new Assessment()
@@ -113,8 +117,7 @@ namespace mobile_app.Services
                 Name = name,
                 Color = color,
                 CreationDate = creationDate,
-                StartNotification = notificationStart,
-                Notes = notes
+                StartNotification = startNotification
             };
 
             await _db.InsertAsync(assessment);
@@ -143,7 +146,7 @@ namespace mobile_app.Services
             return assessments;
         }
 
-        public static async Task UpdateAssessment(int id, string name, string color, DateTime creationDate, bool notificationStart, string notes)
+        public static async Task UpdateAssessment(int id, string name, string color, DateTime creationDate, bool startNotification)
         {
             await Init();
 
@@ -156,8 +159,7 @@ namespace mobile_app.Services
                 assessmentQuerry.Name = name;
                 assessmentQuerry.Color = color;
                 assessmentQuerry.CreationDate = creationDate;
-                assessmentQuerry.StartNotification = notificationStart;
-                assessmentQuerry.Notes = notes;
+                assessmentQuerry.StartNotification = startNotification;
 
                 await _db.UpdateAsync(assessmentQuerry);
             }
@@ -231,6 +233,8 @@ namespace mobile_app.Services
                 Email = "dkyle18@wgu.edu",
                 StartDate = DateTime.Today.Date,
                 EndDate = DateTime.Today.AddDays(14).Date,
+                StartNotification = true,
+                Notes = "A class on mobile applications"
             };
 
             Course course2 = new Course()
@@ -243,6 +247,8 @@ namespace mobile_app.Services
                 Email = "jdean175@wgu.edu",
                 StartDate = DateTime.Today.AddDays(14).Date,
                 EndDate = DateTime.Today.AddDays(28).Date,
+                StartNotification = true,
+                Notes = "A class on databases."
             };
 
             await _db.InsertAsync(course2);
@@ -257,6 +263,8 @@ namespace mobile_app.Services
                 Email = "ssteward47@wgu.edu",
                 StartDate = DateTime.Today.AddDays(28).Date,
                 EndDate = DateTime.Today.AddDays(42).Date,
+                StartNotification = true,
+                Notes = "A test of knowledge."
             };
 
             await _db.InsertAsync(course3);
@@ -271,6 +279,8 @@ namespace mobile_app.Services
                 Email = "ssteward47@wgu.edu",
                 StartDate = DateTime.Today.AddDays(42).Date,
                 EndDate = DateTime.Today.AddDays(56).Date,
+                StartNotification = true,
+                Notes = "A class on coulds."
             };
 
             await _db.InsertAsync(course4);
@@ -285,6 +295,8 @@ namespace mobile_app.Services
                 Email = "sjohnson87@wgu.edu",
                 StartDate = DateTime.Today.AddDays(56).Date,
                 EndDate = DateTime.Today.AddDays(70).Date,
+                StartNotification = true,
+                Notes = "A class on AI."
             };
 
             await _db.InsertAsync(course5);
@@ -299,6 +311,8 @@ namespace mobile_app.Services
                 Email = "jdean175@wgu.edu",
                 StartDate = DateTime.Today.AddDays(70).Date,
                 EndDate = DateTime.Today.AddDays(84).Date,
+                StartNotification = true,
+                Notes = "A class on Data."
             };
 
             await _db.InsertAsync(course6);

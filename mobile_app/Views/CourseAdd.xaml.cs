@@ -52,7 +52,7 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.AddCourse(_selectedTermId, courseName.Text, courseStatus.SelectedItem.ToString(), instructorName.Text, phone.Text, email.Text, StartDatePicker.Date, EndDatePicker.Date);
+            await DatabaseService.AddCourse(_selectedTermId, courseName.Text, courseStatus.SelectedItem.ToString(), instructorName.Text, phone.Text, email.Text, StartDatePicker.Date, EndDatePicker.Date, Notification.IsToggled, NoteEditor.Text);
             await Navigation.PopAsync();
         }
     }
