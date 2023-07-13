@@ -26,7 +26,7 @@ namespace mobile_app.Views
 
             _selectedCourseId = course.Id;
             courseName.Text = course.Name;
-            CourseIsActive.IsToggled = course.Status;
+            courseStatus.SelectedItem = course.Status;
             instructorName.Text = course.InstructorName;
             phone.Text = course.PhoneNumber;
             email.Text = course.Email;
@@ -60,7 +60,7 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.UpdateCourse(_selectedCourseId, courseName.Text, CourseIsActive.IsToggled, instructorName.Text, phone.Text, email.Text, StartDatePicker.Date, EndDatePicker.Date);
+            await DatabaseService.UpdateCourse(_selectedCourseId, courseName.Text, courseStatus.SelectedItem.ToString(), instructorName.Text, phone.Text, email.Text, StartDatePicker.Date, EndDatePicker.Date);
            await Navigation.PopAsync();
         }
 

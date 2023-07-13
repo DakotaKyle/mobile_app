@@ -36,7 +36,7 @@ namespace mobile_app.Services
 
         #region Course methods
 
-        public static async Task AddCourse(int termId, string name, bool status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
+        public static async Task AddCourse(int termId, string name, string status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
         {
             await Init();
 
@@ -78,7 +78,7 @@ namespace mobile_app.Services
             return courses;
         }
 
-        public static async Task UpdateCourse(int id, string name, bool status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
+        public static async Task UpdateCourse(int id, string name, string status, string instructorName, string phoneNumber, string email, DateTime startDate, DateTime endDate)
         {
             await Init();
 
@@ -225,7 +225,7 @@ namespace mobile_app.Services
             {
                 TermId = 1,
                 Name = "Mobile Application Development",
-                Status = true,
+                Status = "Active",
                 InstructorName = "Dakota Kyle",
                 PhoneNumber = "1234567890",
                 Email = "dkyle18@wgu.edu",
@@ -237,7 +237,7 @@ namespace mobile_app.Services
             {
                 TermId = 1,
                 Name = "Advanced Database Applications",
-                Status = false,
+                Status = "Enrolled",
                 InstructorName = "Jeff Dean",
                 PhoneNumber = "1867530999",
                 Email = "jdean175@wgu.edu",
@@ -251,7 +251,7 @@ namespace mobile_app.Services
             {
                 TermId = 1,
                 Name = "Capstone Project",
-                Status = false,
+                Status = "Enrolled",
                 InstructorName = "Sara Stewart",
                 PhoneNumber = "5847893652",
                 Email = "ssteward47@wgu.edu",
@@ -265,7 +265,7 @@ namespace mobile_app.Services
             {
                 TermId = 1,
                 Name = "Cloud Computing",
-                Status = false,
+                Status = "Completed",
                 InstructorName = "Sara Stewart",
                 PhoneNumber = "5847893652",
                 Email = "ssteward47@wgu.edu",
@@ -279,7 +279,7 @@ namespace mobile_app.Services
             {
                 TermId = 1,
                 Name = "AI Algorithmns",
-                Status = false,
+                Status = "Completed",
                 InstructorName = "Steve johnson",
                 PhoneNumber = "5847893652",
                 Email = "sjohnson87@wgu.edu",
@@ -293,7 +293,7 @@ namespace mobile_app.Services
             {
                 TermId = 1,
                 Name = "Advanced Data Analysis",
-                Status = false,
+                Status = "Completed",
                 InstructorName = "Jeff Dean",
                 PhoneNumber = "1867530999",
                 Email = "jdean175@wgu.edu",

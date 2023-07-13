@@ -15,26 +15,35 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Course Name"/>
                 <Entry Grid.Row="0" Grid.Column="1" x:Name="courseName" VerticalTextAlignment="Center" Text="{Binding Name}"/>
-                <Label Grid.Row="0" Grid.Column="2" FontSize="Small" FontAttributes="Bold" VerticalTextAlignment="Center" Text="Activate Course"/>
-                <Switch Grid.Row="0" Grid.Column="3" x:Name="CourseIsActive" HorizontalOptions="End" IsToggled="False"/>
-                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Instructor"/>
-                <Entry Grid.Row="1" Grid.Column="1" x:Name="instructorName" VerticalTextAlignment="Center" Text="{Binding InstructorName}"/>
-                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Phone"/>
-                <Entry Grid.Row="2" Grid.Column="1" x:Name="phone" VerticalTextAlignment="Center" Text="{Binding PhoneNumber}"/>
-                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Email"/>
-                <Entry Grid.Row="3" Grid.Column="1" x:Name="email" VerticalTextAlignment="Center" Text="{Binding Email}"/>
-                <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Start Date"/>
-                <DatePicker Grid.Row="5" Grid.Column="0" x:Name="StartDatePicker"/>
-                <Label Grid.Row="4" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date"/>
-                <DatePicker Grid.Row="5" Grid.Column="1" x:Name="EndDatePicker"/>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Course Status"/>
+                <Picker Grid.Row="1" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" x:Name="courseStatus">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Enrolled</x:String>
+                            <x:String>Active</x:String>
+                            <x:String>Completed</x:String>
+                            <x:String>Failed</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Instructor"/>
+                <Entry Grid.Row="2" Grid.Column="1" x:Name="instructorName" VerticalTextAlignment="Center" Text="{Binding InstructorName}"/>
+                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Phone"/>
+                <Entry Grid.Row="3" Grid.Column="1" x:Name="phone" VerticalTextAlignment="Center" Text="{Binding PhoneNumber}"/>
+                <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Email"/>
+                <Entry Grid.Row="4" Grid.Column="1" x:Name="email" VerticalTextAlignment="Center" Text="{Binding Email}"/>
+                <Label Grid.Row="5" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Start Date"/>
+                <DatePicker Grid.Row="5" Grid.Column="1" x:Name="StartDatePicker"/>
+                <Label Grid.Row="6" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date"/>
+                <DatePicker Grid.Row="6" Grid.Column="1" x:Name="EndDatePicker"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
