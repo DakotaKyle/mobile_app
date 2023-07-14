@@ -108,15 +108,15 @@ namespace mobile_app.Services
 
         #region Assessment methods
 
-        public static async Task AddAssessment(int courseId, string name, string color, DateTime creationDate, bool startNotification)
+        public static async Task AddAssessment(int courseId, string name, string type, DateTime dueDate, bool startNotification)
         {
             await Init();
             var assessment = new Assessment()
             {
                 CourseId = courseId,
                 Name = name,
-                Color = color,
-                CreationDate = creationDate,
+                AssessmentType = type,
+                DueDate = dueDate,
                 StartNotification = startNotification
             };
 
@@ -146,7 +146,7 @@ namespace mobile_app.Services
             return assessments;
         }
 
-        public static async Task UpdateAssessment(int id, string name, string color, DateTime creationDate, bool startNotification)
+        public static async Task UpdateAssessment(int id, string name, string type, DateTime dueDate, bool startNotification)
         {
             await Init();
 
@@ -157,8 +157,8 @@ namespace mobile_app.Services
             if (assessmentQuerry != null)
             {
                 assessmentQuerry.Name = name;
-                assessmentQuerry.Color = color;
-                assessmentQuerry.CreationDate = creationDate;
+                assessmentQuerry.AssessmentType = type;
+                assessmentQuerry.DueDate = dueDate;
                 assessmentQuerry.StartNotification = startNotification;
 
                 await _db.UpdateAsync(assessmentQuerry);
@@ -222,6 +222,8 @@ namespace mobile_app.Services
         public static async Task LoadSampleData()
         {
             await Init();
+
+            #region Course Sample Data
 
             Course course1 = new Course()
             {
@@ -317,16 +319,145 @@ namespace mobile_app.Services
 
             await _db.InsertAsync(course6);
 
+            #endregion
+
+            #region Assessment Sample Data
+
             Assessment assessment1 = new Assessment()
             {
-                Name = "Widget 1",
-                Color = "Blue",
-                CreationDate = DateTime.Today.Date,
+                Name = "Task 1",
+                AssessmentType = "Performance Assessment",
+                DueDate = DateTime.Today.AddDays(7).Date,
                 StartNotification = true,
                 CourseId = course1.Id
             };
 
             await _db.InsertAsync(assessment1);
+
+            Assessment assessment2 = new Assessment()
+            {
+                Name = "Task 2",
+                AssessmentType = "Objective Assessment",
+                DueDate = DateTime.Today.AddDays(14).Date,
+                StartNotification = true,
+                CourseId = course1.Id
+            };
+
+            await _db.InsertAsync(assessment2);
+
+            Assessment assessment3 = new Assessment()
+            {
+                Name = "Task 1",
+                AssessmentType = "Performance Assessment",
+                DueDate = DateTime.Today.AddDays(21).Date,
+                StartNotification = true,
+                CourseId = course2.Id
+            };
+
+            await _db.InsertAsync(assessment3);
+
+            Assessment assessment4 = new Assessment()
+            {
+                Name = "Task 2",
+                AssessmentType = "Objective Assessment",
+                DueDate = DateTime.Today.AddDays(28).Date,
+                StartNotification = true,
+                CourseId = course2.Id
+            };
+
+            await _db.InsertAsync(assessment4);
+
+            Assessment assessment5 = new Assessment()
+            {
+                Name = "Task 1",
+                AssessmentType = "Performance Assessment",
+                DueDate = DateTime.Today.AddDays(35).Date,
+                StartNotification = true,
+                CourseId = course3.Id
+            };
+
+            await _db.InsertAsync(assessment5);
+
+            Assessment assessment6 = new Assessment()
+            {
+                Name = "Task 2",
+                AssessmentType = "Objective Assessment",
+                DueDate = DateTime.Today.AddDays(42).Date,
+                StartNotification = true,
+                CourseId = course3.Id
+            };
+
+            await _db.InsertAsync(assessment6);
+
+            Assessment assessment7 = new Assessment()
+            {
+                Name = "Task 1",
+                AssessmentType = "Performance Assessment",
+                DueDate = DateTime.Today.AddDays(49).Date,
+                StartNotification = true,
+                CourseId = course4.Id
+            };
+
+            await _db.InsertAsync(assessment7);
+
+            Assessment assessment8 = new Assessment()
+            {
+                Name = "Task 2",
+                AssessmentType = "Objective Assessment",
+                DueDate = DateTime.Today.AddDays(56).Date,
+                StartNotification = true,
+                CourseId = course4.Id
+            };
+
+            await _db.InsertAsync(assessment8);
+
+            Assessment assessment9 = new Assessment()
+            {
+                Name = "Task 1",
+                AssessmentType = "Performance Assessment",
+                DueDate = DateTime.Today.AddDays(63).Date,
+                StartNotification = true,
+                CourseId = course5.Id
+            };
+
+            await _db.InsertAsync(assessment9);
+
+            Assessment assessment10 = new Assessment()
+            {
+                Name = "Task 2",
+                AssessmentType = "Objective Assessment",
+                DueDate = DateTime.Today.AddDays(70).Date,
+                StartNotification = true,
+                CourseId = course5.Id
+            };
+
+            await _db.InsertAsync(assessment10);
+
+            Assessment assessment11 = new Assessment()
+            {
+                Name = "Task 1",
+                AssessmentType = "Performance Assessment",
+                DueDate = DateTime.Today.AddDays(77).Date,
+                StartNotification = true,
+                CourseId = course6.Id
+            };
+
+            await _db.InsertAsync(assessment11);
+
+            Assessment assessment12 = new Assessment()
+            {
+                Name = "Task 2",
+                AssessmentType = "Objective Assessment",
+                DueDate = DateTime.Today.AddDays(84).Date,
+                StartNotification = true,
+                CourseId = course6.Id
+            };
+
+            await _db.InsertAsync(assessment12);
+
+            #endregion
+
+            #region Term Sample Data
 
             Term term = new Term()
             {
@@ -338,6 +469,8 @@ namespace mobile_app.Services
 
             await _db.InsertAsync(term);
         }
+
+        #endregion
 
         #endregion
 

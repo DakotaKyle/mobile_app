@@ -14,32 +14,27 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Name"/>
-                <Entry x:Name="WidgetName" Placeholder="Enter Widget Name" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" Text="{Binding Name}"/>
-                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Color"/>
-                <Picker x:Name="WidgetColorPicker" Grid.Row="1" Grid.Column="1" FontSize="Medium"
-                        Title="Select a color"
-                        TitleColor="Teal">
+                <Entry Grid.Row="0" Grid.Column="1" x:Name="assessmentName"  VerticalTextAlignment="Center" Placeholder="Enter Assessment Name" Text="{Binding Name}"/>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Assessment Type"/>
+                <Picker x:Name="type" Grid.Row="1" Grid.Column="1" FontSize="Medium"
+                        Title="Select an assessment type">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Red</x:String>
-                            <x:String>Black</x:String>
-                            <x:String>Blue</x:String>
-                        </x:Array>
+                        <x:String>Performance Assessment</x:String>
+                        <x:String>Objective Assessment</x:String>
+                    </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Creation Date"/>
-                <DatePicker x:Name="CreationDatePicker" Grid.Row="2" Grid.Column="1"/>
-                <Label Grid.Row="4" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notify"/>
-                <Switch x:Name="Notification" Grid.Row="4" Grid.Column="1" HorizontalOptions="End" IsToggled="True"/>
+                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Due Date"/>
+                <DatePicker x:Name="DueDatePicker" Grid.Row="2" Grid.Column="1"/>
+                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notify"/>
+                <Switch x:Name="Notification" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" IsToggled="True"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

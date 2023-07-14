@@ -44,7 +44,7 @@ namespace mobile_app.Views
             {
                 if (assessmentRecord.StartNotification == true)
                 {
-                    if (assessmentRecord.CreationDate == DateTime.Today)
+                    if (assessmentRecord.DueDate == DateTime.Today)
                     {
                         CrossLocalNotifications.Current.Show("Notice", $"{assessmentRecord.Name} begins today!", notifyId);
                     }

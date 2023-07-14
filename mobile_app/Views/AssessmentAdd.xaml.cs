@@ -1,4 +1,5 @@
-﻿using mobile_app.Services;
+﻿using mobile_app.Models;
+using mobile_app.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,18 +29,18 @@ namespace mobile_app.Views
 
         private async void SaveAssessment_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(WidgetName.Text))
+            if (string.IsNullOrWhiteSpace(assessmentName.Text))
             {
                 await DisplayAlert("Missing name", "Please enter a name", "OK");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(WidgetColorPicker.SelectedItem.ToString()))
+            if (string.IsNullOrWhiteSpace(type.SelectedItem.ToString()))
             {
-                await DisplayAlert("Missing color", "Please enter a color", "OK");
+                await DisplayAlert("Missing Assessment type", "Please select a type", "OK");
                 return;
             }
 
-            await DatabaseService.AddAssessment(_selectedCourseId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled);
+            await DatabaseService.AddAssessment(_selectedCourseId, assessmentName.Text, type.SelectedItem.ToString(), DueDatePicker.Date, Notification.IsToggled);
             await Navigation.PopAsync();
         }
     }

@@ -26,40 +26,39 @@ namespace mobile_app.Views
             InitializeComponent();
 
             _selectedAssessmentId = selectedAssessment.Id;
-            WidgetId.Text = selectedAssessment.Id.ToString();
-            WidgetName.Text = selectedAssessment.Name.ToString();
-            WidgetColorPicker.SelectedItem = selectedAssessment.Color;
-            CreationDatePicker.Date = selectedAssessment.CreationDate;
+            assessmentName.Text = selectedAssessment.Name.ToString();
+            type.SelectedItem = selectedAssessment.AssessmentType;
+            DueDatePicker.Date = selectedAssessment.DueDate;
         }
 
         private async void SaveAssessment_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(WidgetName.Text))
+            if (string.IsNullOrWhiteSpace(assessmentName.Text))
             {
                 await DisplayAlert("Missing name", "Please enter a name", "OK");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(WidgetColorPicker.SelectedItem.ToString()))
+            if (string.IsNullOrWhiteSpace(type.SelectedItem.ToString()))
             {
-                await DisplayAlert("Missing color", "Please enter a color", "OK");
+                await DisplayAlert("Missing an assessment type", "Please select an assessment", "OK");
                 return;
             }
 
-            await DatabaseService.UpdateAssessment(_selectedAssessmentId, WidgetName.Text, WidgetColorPicker.SelectedItem.ToString(), CreationDatePicker.Date, Notification.IsToggled);
+            await DatabaseService.UpdateAssessment(_selectedAssessmentId, assessmentName.Text, type.SelectedItem.ToString(), DueDatePicker.Date, Notification.IsToggled);
             await Navigation.PopAsync();
         }
 
         private async void DeleteAssessment_Clicked(object sender, EventArgs e)
         {
-            var answer = await DisplayAlert("Delete Widget?", "Delete this Widget?", "Yes", "No");
+            var answer = await DisplayAlert("Delete Assessment?", "Delete this Assessment?", "Yes", "No");
 
             if (answer == true)
             {
-                var id = int.Parse(WidgetId.Text);
+                var id = _selectedAssessmentId;
 
                 await DatabaseService.RemoveAssessment(id);
 
-                await DisplayAlert("Widget deleted.", "Widget deleted", "OK");
+                await DisplayAlert("Assessment deleted.", "Assessment deleted", "OK");
             }
 
             await Navigation.PopAsync();
