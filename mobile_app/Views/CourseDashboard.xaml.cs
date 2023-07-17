@@ -17,7 +17,6 @@ namespace mobile_app.Views
     {
 
         private readonly int _selectedTermId;
-        private readonly string _selectedNotes;
 
         public CourseDashboard()
         {

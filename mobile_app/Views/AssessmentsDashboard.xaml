@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_app.Views.AssessmentsDashboard">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Display assessments in a list -->
+
+            <CollectionView x:Name="AssessmentCollectionView"
+                            ItemsSource="{Binding Assessments}"
+                            EmptyView="No Assessments to display."
+                            SelectionMode="Single"
+                            SelectionChanged="AssessmentCollectionView_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+
+                <!-- Define the appearance of each item in the list -->
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid Padding="5" RowSpacing="1" ColumnSpacing="1" BackgroundColor="WhiteSmoke">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Name"/>
+                                <Entry Grid.Row="0" Grid.Column="1" x:Name="assessmentName"  VerticalTextAlignment="Center" Text="{Binding Name}" IsReadOnly="True"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Assessment Type"/>
+                                <Entry Grid.Row="1" Grid.Column="1" x:Name="assessmentType"  VerticalTextAlignment="Center" Text="{Binding AssessmentType}" IsReadOnly="True"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Due Date"/>
+                                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="DueDatePicker" Date="{Binding DueDate}"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notify"/>
+                                <Switch x:Name="Notification" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" IsToggled="True"/>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

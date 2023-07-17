@@ -197,6 +197,15 @@ namespace mobile_app.Services
             return terms;
         }
 
+        public static async Task<IEnumerable<Term>> GetTerms(int termId)
+        {
+            await Init();
+
+            var term = await _db.Table<Term>().Where(i => i.Id == termId).ToListAsync();
+
+            return term;
+        }
+
         public static async Task UpdateTerm(int id, string name, DateTime startDate, DateTime endDate)
         {
             await Init();
@@ -327,7 +336,7 @@ namespace mobile_app.Services
             {
                 Name = "Task 1",
                 AssessmentType = "Performance Assessment",
-                DueDate = DateTime.Today.AddDays(7).Date,
+                DueDate = DateTime.Today.AddDays(7),
                 StartNotification = true,
                 CourseId = course1.Id
             };
@@ -338,7 +347,7 @@ namespace mobile_app.Services
             {
                 Name = "Task 2",
                 AssessmentType = "Objective Assessment",
-                DueDate = DateTime.Today.AddDays(14).Date,
+                DueDate = DateTime.Today.AddDays(14),
                 StartNotification = true,
                 CourseId = course1.Id
             };
@@ -463,8 +472,8 @@ namespace mobile_app.Services
             {
                 Id = 1,
                 Name = "Term 1",
-                StartDate = DateTime.Today.Date,
-                EndDate = DateTime.Today.Date,
+                StartDate = DateTime.Today.Date.AddDays(7),
+                EndDate = DateTime.Today.Date.AddDays(90),
             };
 
             await _db.InsertAsync(term);

@@ -88,22 +88,6 @@ namespace mobile_app.Views
             await Navigation.PushAsync(new AssessmentAdd(courseId));
         }
 
-        async void AssessmentCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var assessment = (Assessment)e.CurrentSelection.FirstOrDefault();
-
-            if (e.CurrentSelection != null)
-            {
-                await Navigation.PushAsync(new AssessmentEdit(assessment));
-            }
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            AssessmentCollectionView.ItemsSource = await DatabaseService.GetAssessments();
-        }
-
         private async void ShareURL_Clicked(object sender, EventArgs e)
         {
             var text = NotesEditor.Text;
@@ -113,6 +97,13 @@ namespace mobile_app.Views
                 Text = text,
                 Title = "Share Notes."
             });
+        }
+
+        private async void ViewAssessment_Clicked(object sender, EventArgs e)
+        {
+            var courseId = _selectedCourseId;
+
+            await Navigation.PushAsync(new AssessmentsDashboard(courseId));
         }
     }
 }
