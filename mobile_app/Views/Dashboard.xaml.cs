@@ -42,7 +42,7 @@ namespace mobile_app.Views
             if (e.CurrentSelection != null)
             {
                 Term term = (Term)e.CurrentSelection.FirstOrDefault();
-                await Navigation.PushAsync(new CourseDashboard(term.Id));
+                await Navigation.PushAsync(new TermEdit(term));
             }
         }
     }

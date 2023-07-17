@@ -5,6 +5,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="SaveTerm" Text="Save" Clicked="SaveTerm_Clicked"/>
         <ToolbarItem x:Name="DeleteTerm" Text="Delete Term" Clicked="DeleteTerm_Clicked"/>
+        <ToolbarItem x:Name="ViewCourses" Text="View Courses" Clicked="ViewCourses_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

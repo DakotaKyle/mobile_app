@@ -7,7 +7,6 @@
     </NavigationPage.TitleView>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="AddCourse" Text="Add Class" Clicked="AddCourse_Clicked"/>
-        <ToolbarItem x:Name="EditTerm" Text="Edit Term" Clicked="EditTerm_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
 

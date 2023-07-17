@@ -31,6 +31,7 @@ namespace mobile_app.Views
             instructorName.Text = course.InstructorName;
             phone.Text = course.PhoneNumber;
             email.Text = course.Email;
+            NotesEditor.Text = course.Notes;
             StartDatePicker.Date = course.StartDate;
             EndDatePicker.Date = course.EndDate;
         }

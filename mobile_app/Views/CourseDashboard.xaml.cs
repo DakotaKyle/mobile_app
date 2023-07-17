@@ -68,10 +68,10 @@ namespace mobile_app.Views
             await Navigation.PushAsync(new CourseAdd(termId));
         }
 
-        private async void EditTerm_Clicked(object sender, EventArgs e)
+      /*  private async void EditTerm_Clicked(object sender, EventArgs e)
         {
             var termId = _selectedTermId;
             await Navigation.PushAsync(new TermEdit(termId));
-        }
+        } */
     }
 }

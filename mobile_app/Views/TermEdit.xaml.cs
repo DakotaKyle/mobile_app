@@ -13,18 +13,20 @@ namespace mobile_app.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TermEdit : ContentPage
 	{
-        private readonly int _selectedTermId;
+        private readonly Term _selectedTerm;
 
 		public TermEdit ()
 		{
 			InitializeComponent ();
 		}
 
-		public TermEdit(int termId)
+		public TermEdit(Term term)
 		{
 			InitializeComponent ();
-            _selectedTermId = termId;
-
+            _selectedTerm = term;
+            TermName.Text = term.Name;
+            StartDatePicker.Date = term.StartDate;
+            EndDatePicker.Date = term.EndDate;
 		}
 
         private async void SaveTerm_Clicked(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace mobile_app.Views
                 return;
             }
 
-            await DatabaseService.UpdateTerm(_selectedTermId, TermName.Text, StartDatePicker.Date, EndDatePicker.Date);
+            await DatabaseService.UpdateTerm(_selectedTerm.Id, TermName.Text, StartDatePicker.Date, EndDatePicker.Date);
             await Navigation.PopToRootAsync();
         }
 
@@ -55,14 +57,16 @@ namespace mobile_app.Views
 
             if (answer == true)
             {
-                var id = _selectedTermId;
-
-                await DatabaseService.RemoveTerm(id);
-
+                await DatabaseService.RemoveTerm(_selectedTerm.Id);
                 await DisplayAlert("Term deleted.", "Term and all related courses have been deleted", "OK");
             }
 
             await Navigation.PopToRootAsync();
+        }
+
+        private async void ViewCourses_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CourseDashboard(_selectedTerm.Id));
         }
     }
 }
