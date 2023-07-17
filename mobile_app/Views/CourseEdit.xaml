@@ -50,7 +50,7 @@
                 <Label Grid.Row="6" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="End Date"/>
                 <DatePicker Grid.Row="6" Grid.Column="1" x:Name="EndDatePicker"/>
                 <Label Grid.Row="7" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notes"/>
-                <Editor Grid.Row="7" Grid.Column="1" x:Name="NotesEditor" Placeholder="Enter your notes here."/>
+                <Editor Grid.Row="7" Grid.Column="1" x:Name="NotesEditor" Text="{Binding Notes}"/>
                 <Label Grid.Row="8" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Share"/>
                 <Button Grid.Row="8" Grid.Column="1" FontSize="Medium" VerticalOptions="Center" Text="Share URL" Font="Medium" x:Name="ShareURL" Clicked="ShareURL_Clicked"/>
                 <Label Grid.Row="9" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notifications"/>
