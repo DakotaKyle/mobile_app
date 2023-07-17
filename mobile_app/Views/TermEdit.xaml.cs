@@ -24,6 +24,7 @@ namespace mobile_app.Views
 		{
 			InitializeComponent ();
             _selectedTermId = termId;
+
 		}
 
         private async void SaveTerm_Clicked(object sender, EventArgs e)

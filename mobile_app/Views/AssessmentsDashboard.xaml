@@ -2,14 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="mobile_app.Views.AssessmentsDashboard">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddAssessment" Text="Add Assessment" Clicked="AddAssessment_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <!-- Display assessments in a list -->
 
             <CollectionView x:Name="AssessmentCollectionView"
                             ItemsSource="{Binding Assessments}"
-                            EmptyView="No Assessments to display."
                             SelectionMode="Single"
+                            EmptyView="No assessments to display"
                             SelectionChanged="AssessmentCollectionView_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>

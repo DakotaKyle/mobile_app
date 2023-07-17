@@ -218,7 +218,7 @@ namespace mobile_app.Services
             {
                 termQuerry.Name = name;
                 termQuerry.StartDate = startDate;
-                termQuerry.StartDate = endDate;
+                termQuerry.EndDate = endDate;
 
                 await _db.UpdateAsync(termQuerry);
             }

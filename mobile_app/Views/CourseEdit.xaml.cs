@@ -81,13 +81,6 @@ namespace mobile_app.Views
             await Navigation.PopAsync();
         }
 
-        async void AddAssessment_Clicked(object sender, EventArgs e)
-        {
-            var courseId = _selectedCourseId;
-
-            await Navigation.PushAsync(new AssessmentAdd(courseId));
-        }
-
         private async void ShareURL_Clicked(object sender, EventArgs e)
         {
             var text = NotesEditor.Text;

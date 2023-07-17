@@ -42,5 +42,12 @@ namespace mobile_app.Views
             base.OnAppearing();
             AssessmentCollectionView.ItemsSource = await DatabaseService.GetAssessments(_selectedCourseId);
         }
+
+        async void AddAssessment_Clicked(object sender, EventArgs e)
+        {
+            var courseId = _selectedCourseId;
+
+            await Navigation.PushAsync(new AssessmentAdd(courseId));
+        }
     }
 }
