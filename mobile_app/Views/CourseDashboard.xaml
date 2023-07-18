@@ -61,8 +61,6 @@
                             <Label Grid.Row="6" Grid.Column="1" FontSize="Medium" VerticalTextAlignment="Center" Text="{Binding EndDate, StringFormat='{mm/dd/yyyy}'}"/>
                             <Label Grid.Row="7" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notes"/>
                             <Editor Grid.Row="7" Grid.Column="1" x:Name="NotesEditor" VerticalOptions="Center" Text="{Binding Notes}" IsReadOnly="True"/>
-                            <Label Grid.Row="9" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notifications"/>
-                            <Switch Grid.Row="9" Grid.Column="1" x:Name="Notification" HorizontalOptions="End" IsToggled="True" VerticalOptions="Center"/>
                         </Grid>
                     </StackLayout>
                 </DataTemplate>

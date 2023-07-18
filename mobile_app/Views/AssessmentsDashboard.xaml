@@ -39,9 +39,8 @@
                                 <Label Grid.Row="1" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Assessment Type"/>
                                 <Entry Grid.Row="1" Grid.Column="1" x:Name="assessmentType"  VerticalTextAlignment="Center" Text="{Binding AssessmentType}" IsReadOnly="True"/>
                                 <Label Grid.Row="2" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Due Date"/>
-                                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="DueDatePicker" Date="{Binding DueDate}"/>
+                                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="DueDatePicker" Date="{Binding DueDate}" IsEnabled="False"/>
                                 <Label Grid.Row="3" Grid.Column="0" FontSize="Medium" VerticalTextAlignment="Center" Text="Notify"/>
-                                <Switch x:Name="Notification" Grid.Row="3" Grid.Column="1" HorizontalOptions="End" IsToggled="True"/>
                             </Grid>
                         </StackLayout>
                     </DataTemplate>

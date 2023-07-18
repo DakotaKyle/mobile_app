@@ -34,18 +34,22 @@ namespace mobile_app.Views
         {
             base.OnAppearing();
 
-            var AssessmentList = await DatabaseService.GetAssessments();
+            var CourseList = await DatabaseService.GetCourses(_selectedTermId);
             var notifyRandom = new Random();
             var notifyId = notifyRandom.Next(1000);
 
-            // Handles Notifications.
-            foreach (Assessment assessmentRecord in AssessmentList)
+            // Handles course notifications.
+            foreach (Course courseRecord in CourseList)
             {
-                if (assessmentRecord.StartNotification == true)
+                if (courseRecord.StartNotification == true)
                 {
-                    if (assessmentRecord.DueDate == DateTime.Today)
+                    if (courseRecord.StartDate == DateTime.Today)
                     {
-                        CrossLocalNotifications.Current.Show("Notice", $"{assessmentRecord.Name} begins today!", notifyId);
+                        CrossLocalNotifications.Current.Show("Notice", $"Your scheduled to start {courseRecord.Name} today!", notifyId);
+                    }
+                    if (courseRecord.EndDate == DateTime.Today)
+                    {
+                        CrossLocalNotifications.Current.Show("Notice", $"Your scheduled to finish {courseRecord.Name} today!", notifyId);
                     }
                 }
             }
@@ -67,11 +71,5 @@ namespace mobile_app.Views
             var termId = _selectedTermId;
             await Navigation.PushAsync(new CourseAdd(termId));
         }
-
-      /*  private async void EditTerm_Clicked(object sender, EventArgs e)
-        {
-            var termId = _selectedTermId;
-            await Navigation.PushAsync(new TermEdit(termId));
-        } */
     }
 }

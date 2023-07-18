@@ -1,5 +1,6 @@
 ﻿using mobile_app.Models;
 using mobile_app.Services;
+using Plugin.LocalNotifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,23 @@ namespace mobile_app.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            var AssessmentList = await DatabaseService.GetAssessments(_selectedCourseId);
+            var notifyRandom = new Random();
+            var notifyId = notifyRandom.Next(1000);
+
+            // Handles assessment notifications.
+            foreach (Assessment assessmentRecord in AssessmentList)
+            {
+                if (assessmentRecord.StartNotification == true)
+                {
+                    if (assessmentRecord.DueDate == DateTime.Today)
+                    {
+                        CrossLocalNotifications.Current.Show("Notice", $"your {assessmentRecord.Name} begins today!", notifyId);
+                    }
+                }
+            }
+
             AssessmentCollectionView.ItemsSource = await DatabaseService.GetAssessments(_selectedCourseId);
         }
 
